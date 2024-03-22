@@ -212,6 +212,19 @@ table tr td,th{
         padding: 0px;
     }
 
+    select{
+        height: 31px;
+    }
+
+    #main-title{
+        font-size: 25px;
+
+    } 
+    
+    #main-sub-title{
+        font-size: 18px;
+    }
+
     #table-container{
         overflow-x: scroll;
     }

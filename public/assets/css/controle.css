@@ -366,6 +366,15 @@ table tr td,th{
         font-size: 20px;
     }
 
+    #main-title{
+        font-size: 25px;
+
+    } 
+    
+    #main-sub-title{
+        font-size: 18px;
+    }
+
     #inputs-entrada-e-saida-infos-container{
         grid-template-columns: 1fr 1fr;
     }

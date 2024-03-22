@@ -135,7 +135,7 @@ header button:hover{
 }
 
 #moeda-icon{
-    width: 50px;
+    width: 44px;
 }
 
 .icons-pngs{
@@ -366,13 +366,14 @@ table tr td,th{
         font-size: 20px;
     }
 
-    #main-title{
-        font-size: 25px;
+    select{
+        height: 31px;
+    }
 
-    } 
-    
-    #main-sub-title{
-        font-size: 18px;
+    input{
+        height: 31px;
+        width: 100%;
+        /* background-color: red; */
     }
 
     #inputs-entrada-e-saida-infos-container{

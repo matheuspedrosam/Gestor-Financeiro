@@ -382,9 +382,8 @@ table tr td,th{
         align-items: center;
         background-color: white;
         min-width: 165px;
-        height: 30px;
+        height: 29px;
     }
-
 
     #inputs-entrada-e-saida-infos-container{
         grid-template-columns: 1fr 1fr;
@@ -396,11 +395,21 @@ table tr td,th{
     }
 
     #resumo-do-mes-container{
-        gap: 40px 10px;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 0px;
     }
 
     #resumo-do-mes-container h2{
         font-size: 16px;
+    }
+
+    #saldo-total-do-mes-container{
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+
+    #saldo-total-entradas-do-mes-container{
+        margin-right: 10px;
     }
 
     .saldos-totais-do-mes-containers{

@@ -1,0 +1,389 @@
+@charset "UTF-8";
+
+/* Generals */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root{
+    --cor-azul: #24A0ED;
+    --cor-vermelha: #E83F5B;
+    --cor-verde: rgb(0, 189, 0);
+}
+
+.hide{
+    display: none !important;
+}
+
+body{
+    background-color: whitesmoke;
+    padding: 10px 0px 20px 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+
+h1{
+    margin-bottom: 30px;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+label{
+    display: block;
+    margin-bottom: 4px;
+}
+
+input{
+    margin-bottom: 20px;
+}
+
+select{
+    margin-bottom: 20px;
+}
+
+button{
+    cursor: pointer;
+}
+
+hr{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+/* Main */
+
+main{
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+
+header{
+    margin-bottom: 30px;
+}
+
+header button{
+    padding: 6px 10px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 1px 1px lightgray;
+}
+
+header button:hover{
+    box-shadow: 0px 0px 4px lightgray;
+}
+
+/* Content -> */
+
+#img-and-logout-btn-container{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#img-perfil-container{
+    width: 100px;
+    border-radius: 100%;
+    border: 1px solid black;
+}
+
+#img-perfil-container img{
+    border-radius: 100%;
+}
+
+#button-logout{
+    padding: 6px 10px;
+    background-color: rgb(0, 195, 255);
+    color: white;
+    border: 1px solid rgb(0, 195, 255);
+    border-radius: 5px;
+    box-shadow: 1px 1px lightgray;
+}
+
+#button-logout:hover{
+    box-shadow: 0px 0px 4px rgb(0, 195, 255);
+}
+
+/* Inputs */
+
+#inputs-entrada-e-saida-infos-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+input, select{
+    display: block;
+    border: 1px solid lightgray;
+    padding: 6px 10px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+input:focus, select:focus{
+    outline: none;
+    box-shadow: 0px 0px 4px lightgray;
+}
+
+#btn-adicionar-entrada-ou-saida{
+    background-color: var(--cor-azul);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 1px 1px lightgray;
+}
+
+#btn-adicionar-entrada-ou-saida:hover{
+    box-shadow: 0px 0px 4px var(--cor-azul);
+}
+
+/* Loader */
+
+#loader{
+    width: 150px;
+    height: 150px;
+    border-radius: 80%;
+    border-top: 10px solid #24A0ED !important;
+    border: 10px solid lightgray;
+    margin: 60px auto;
+    animation: spinner 1s infinite ease-in-out;
+}
+
+/* Mes e Ordernar Tabela */
+
+#input-visualizar-tabela-mes-e-ordernar-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px 10px;
+    margin-bottom: 40px;
+}
+
+#atualizar-tabela-btn{
+    background-color: var(--cor-azul);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 1px 1px lightgray;
+    max-width: 200px;
+}
+
+#atualizar-tabela-btn:hover{
+    box-shadow: 0px 0px 4px var(--cor-azul);
+}
+
+/* Table */
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+    white-space: nowrap;
+}
+
+table tbody tr :nth-child(7){
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+table tr td,th{
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* Relatórios */
+
+#relatorios-container .table-container{
+    margin-bottom: 50px;
+}
+
+/* Resumo saídas, entradas e saldo */
+
+#resumo-do-mes-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px 20px;
+    box-shadow: 0px 0px 4px lightgray;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#resumo-do-mes-container h2{
+    font-size: 20px;
+}
+
+.saldos-totais-do-mes-containers{
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    box-shadow: 0px 0px 4px lightgray;
+}
+
+.saldos-totais-do-mes-containers:nth-child(1){
+    border: 1px solid var(--cor-verde);
+}
+
+.saldos-totais-do-mes-containers:nth-child(2){
+    border: 1px solid var(--cor-verde);
+}
+
+.saldos-totais-do-mes-containers:nth-child(3){
+    border: 1px solid red;
+}
+
+.saldos-totais-do-mes-containers h2{
+    margin-bottom: 20px;
+    display: block;
+}
+
+.saldos-totais-do-mes-containers div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.saldos-totais-do-mes-containers div p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tipo-entrada, .tipo-saida{
+    border-radius: 100%;
+    color: white;
+}
+
+.tipo-saida{
+    background-color: red;
+}
+
+.tipo-entrada{
+    background-color: var(--cor-verde);
+}
+
+/* Gastos por classes categorias */
+
+#gastos-por-classes-categorias-container{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    width: 100%;
+}
+
+#loader-gastos-por-classes{
+    display: flex;
+    border-radius: 5px;
+    font-size: 20px;
+    border-right: 1px solid lightgray;
+    box-shadow: 0px 0px 4px 1px lightgray;
+}
+
+#essencial-total-container, #nao-essencial-total-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    font-weight: bold;
+}
+
+#essencial-total-container{
+    width: 40%;
+    border-radius: 5px 0px 0px 5px;
+    background-color: var(--cor-azul);
+}
+
+#nao-essencial-total-container{
+    width: 61%;
+    border-radius: 0px 5px 5px 0px;
+    background-color: rgba(0, 255, 255, 0.5);
+}
+
+#essencial-total-container span, #nao-essencial-total-container span{
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 500px) {
+    body{
+        padding: 0px;
+    }
+
+    h1{
+        font-size: 25px;
+    }
+
+    h2{
+        font-size: 20px;
+    }
+
+    #inputs-entrada-e-saida-infos-container{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .table-container{
+        font-size: 12px;
+        overflow-x: scroll;
+    }
+
+    #resumo-do-mes-container{
+        gap: 40px 10px;
+    }
+
+    #resumo-do-mes-container h2{
+        font-size: 16px;
+    }
+
+    .saldos-totais-do-mes-containers{
+        padding: 10px;
+    }
+
+    .saldos-totais-do-mes-containers div p{
+        font-size: 15px;
+        white-space: nowrap;
+    }
+
+    .tipo-entrada, .tipo-saida{
+        font-size: 15px;
+    }
+
+    #loader-gastos-por-classes{
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}
+
+/* Animations */
+
+@keyframes spinner {
+    from{
+        transform: rotate(0deg);
+    } to{
+        transform: rotate(360deg);
+    }
+}

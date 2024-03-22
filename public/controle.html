@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/217/217853.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="assets/css/controle.css">
+    <title>Gestor Financeiro | Controle Mensal</title>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="categorias.html"><button>Voltar para Categorias</button></a>
+        </header>
+
+        <div id="img-and-logout-btn-container">
+            <div id="img-perfil-container">
+                <img src="" alt="">
+            </div>
+            <div id="button-logout-container">
+                <a href="login.html"><button id="button-logout">Sair da Conta</button></a>
+            </div>
+        </div>
+        <h1>Gestor Financeiro 🪙</h1>
+        <h2>Adicionar Entrada / Saída: 💵</h2>
+        <div id="inputs-entrada-e-saida-infos-container">
+            <div>
+                <label for="categoria">Descrição:</label>
+                <input type="text">
+            </div>
+            <div>
+                <label for="categoria">Observação:</label>
+                <input type="text">
+            </div>
+            <div>
+                <label for="categoria">Valor:</label>
+                <input type="number">
+            </div>
+            <div>
+                <label for="select-categoria">Categoria:</label>
+                <select name="" id="select-categoria">
+                    <option value="entrada">Escolha</option>
+                </select>
+            </div>
+            <div>
+                <label for="select-tipo">Tipo:</label>
+                <select name="" id="select-tipo">
+                    <option value="saida">Saída</option>
+                    <option value="entrada">Entrada</option>
+                </select>
+            </div>
+            <div>
+                <label for="categoria">Data:</label>
+                <input type="date">
+            </div>
+        </div>
+        <div>
+            <button id="btn-adicionar-entrada-ou-saida">Adicionar</button>
+        </div>
+
+        <hr>
+
+        <h1>Financeiro:</h1>
+
+        <div id="input-visualizar-tabela-mes-e-ordernar-container">
+            <div>
+                <label for="ordernar-select">Ordernar:</label>
+                <select id="ordernar-select">
+                    <option value="escolha">Escolha</option>
+                </select>
+            </div>
+            <div>
+                <label for="mes-tabela-input">Ver Tabela do mês:</label>
+                <input type="month" id="mes-tabela-input">
+            </div>
+            <div>
+                <button id="atualizar-tabela-btn">Atualizar</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Observação</th>
+                        <th>Categoria</th>
+                        <th>Data</th>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Excluir (?)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Teste</td>
+                        <td>Teste</td>
+                        <td>Teste</td>
+                        <td>12/09/2002</td>
+                        <td>Entrada</td>
+                        <td>R$ 2000,00</td>
+                        <td>Excluir</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <div id="relatorios-container">
+            <h1>Relatórios:</h1>
+
+            <h2><span id="span-saidas-categorias">Saídas por categorias</span> no mês:</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Teste</td>
+                            <td>R$ 2000,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Dados:</h2>
+            <div id="resumo-do-mes-container">
+                <div id="saldo-total-do-mes-container" class="saldos-totais-do-mes-containers">
+                    <h2>Saldo do mês:</h2>
+                    <div>
+                        <p id="saldo-total">R$ 2000</p>
+                        <span class="material-symbols-outlined tipo-entrada">expand_circle_up</span>
+                    </div>
+                </div>
+
+                <div id="saldo-total-entradas-do-mes-container" class="saldos-totais-do-mes-containers">
+                    <h2>Entradas do mês:</h2>
+                    <div>
+                        <p id="saldo-total-entradas">R$ 2000</p>
+                        <span class="material-symbols-outlined tipo-entrada">expand_circle_up</span>
+                    </div>
+                </div>
+
+                <div id="saldo-total-saidas-do-mes-container" class="saldos-totais-do-mes-containers">
+                    <h2>Saídas do mês:</h2>
+                    <div>
+                        <p id="saldo-total-saidas">R$ 2000</p>
+                        <span class="material-symbols-outlined tipo-saida">expand_circle_down</span>
+                    </div>
+                </div>
+
+                <div id="gastos-por-classes-categorias-container">
+                    <h2>Gastos por classe de categoria:</h2>
+                    <div id="loader-gastos-por-classes">
+                        <div id="essencial-total-container">
+                            <span id="essencial-total">Essencial (30%)</span>
+                        </div>
+                        <div id="nao-essencial-total-container">
+                            <span id="nao-essencial-total">Não Essencial (70%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script type="module" src="assets/js/firebaseConfig.js"></script>
+    <script type="module" src="assets/js/redirectUserNotAuth.js"></script>
+    <script type="module" src="assets/js/inicial.js"></script>
+    
+
+    <script src=""></script>
+</body>
+</html>

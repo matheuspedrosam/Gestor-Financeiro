@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/217/217853.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/categorias.css">
+    <title>Gestor Financeiro | Categorias</title>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="controle.html"><button>Ver Controle Financeiro</button></a>
+        </header>
+
+        <div id="img-and-logout-btn-container">
+            <div id="img-perfil-container">
+                <img src="" alt="">
+            </div>
+            <div id="button-logout-container">
+                <a href="login.html"><button id="button-logout">Sair da Conta</button></a>
+            </div>
+        </div>
+        <h1>Gestor Financeiro 🪙</h1>
+        <h2>Adicionar Categoria de Gastos: 💵</h2>
+        <div id="input-categoria-container">
+            <label for="input-categoria">Nome:</label>
+            <input type="text" id="input-categoria">
+        </div>
+        <div id="select-categoria-classe-container">
+            <label for="select-categoria-classe">Qual a classe dessa categoria?:</label>
+            <select name="" id="select-categoria-classe">
+                <option value="Essencial">Essencial</option>
+                <option value="Não Essencial">Não Essencial</option>
+            </select>
+        </div>
+        <div>
+            <button id="btn-adicionar-categoria">Adicionar Categoria</button>
+        </div>
+
+        <hr>
+
+        <div id="loader" class="hide"></div>
+
+        <h2>Categorias:</h2>
+
+        <div id="table-container" class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Classe</th>
+                        <th>Excluir (?)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dados -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script type="module" src="assets/js/firebaseConfig.js"></script>
+    <script type="module" src="assets/js/redirectUserNotAuth.js"></script>
+    <script type="module" src="assets/js/inicial.js"></script>
+    
+    <script type="module" src="assets/js/categorias/adicionarCategoria.js"></script>
+    <script type="module" src="assets/js/categorias/atualizarTabelaCategorias.js"></script>
+    <script type="module" src="assets/js/categorias/apagarCategoria.js"></script>
+</body>
+</html>

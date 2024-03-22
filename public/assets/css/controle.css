@@ -21,7 +21,7 @@
 
 body{
     background-color: whitesmoke;
-    padding: 10px 0px 20px 0px;
+    padding: 0px 0px 20px 0px;
 }
 
 a{
@@ -68,7 +68,7 @@ hr{
 
 main{
     padding: 20px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
     background-color: white;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);

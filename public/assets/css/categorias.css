@@ -213,7 +213,8 @@ table tr td,th{
     }
 
     select{
-        height: 31px;
+        background-color: white;
+        height: 30px;
     }
 
     #main-title{

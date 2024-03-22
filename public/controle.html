@@ -26,21 +26,21 @@
         <h2 id="main-sub-title">Adicionar Entrada / Saída: <img class="icons-pngs" src="assets/imgs/dinheiro-icon.png" alt=""></h2>
         <div id="inputs-entrada-e-saida-infos-container">
             <div>
-                <label for="categoria">Descrição:</label>
-                <input type="text">
+                <label for="input-descricao">Descrição:</label>
+                <input type="text" id="input-descricao">
             </div>
             <div>
-                <label for="categoria">Observação:</label>
-                <input type="text">
+                <label for="input-observacao">Observação:</label>
+                <input type="text" id="input-observacao">
             </div>
             <div>
-                <label for="categoria">Valor:</label>
-                <input type="number">
+                <label for="input-valor">Valor:</label>
+                <input type="number" id="input-valor">
             </div>
             <div>
                 <label for="select-categoria">Categoria:</label>
                 <select name="" id="select-categoria">
-                    <option value="entrada">Escolha</option>
+                    <option value="escolha">Escolha</option>
                 </select>
             </div>
             <div>
@@ -51,8 +51,8 @@
                 </select>
             </div>
             <div>
-                <label for="categoria">Data:</label>
-                <input type="date">
+                <label for="input-data">Data:</label>
+                <input type="date" id="input-data">
             </div>
         </div>
         <div>
@@ -67,7 +67,16 @@
             <div>
                 <label for="ordernar-select">Ordernar:</label>
                 <select id="ordernar-select">
-                    <option value="escolha">Escolha</option>
+                    <option value="Escolha">Escolha</option>
+                    <option value="Descrição">Descrição</option>
+                    <option value="Descrição decrescente">Descrição decrescente</option>
+                    <option value="Categoria">Categoria</option>
+                    <option value="Categoria decrescente">Categoria decrescente</option>
+                    <option value="Data">Data</option>
+                    <option value="Data decrescente">Data decrescente</option>
+                    <option value="Entrada">Entrada</option>
+                    <option value="Saída">Saída</option>
+                    <option value="Valor">Valor</option>
                 </select>
             </div>
             <div>

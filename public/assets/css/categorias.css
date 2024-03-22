@@ -226,6 +226,7 @@ table tr td,th{
     }
 
     #table-container{
+        font-size: 14px;
         overflow-x: scroll;
     }
 }

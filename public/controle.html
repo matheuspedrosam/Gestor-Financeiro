@@ -22,8 +22,8 @@
                 <a href="login.html"><button id="button-logout">Sair da Conta</button></a>
             </div>
         </div>
-        <h1>Gestor Financeiro 🪙</h1>
-        <h2>Adicionar Entrada / Saída: 💵</h2>
+        <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
+        <h2 id="main-sub-title">Adicionar Entrada / Saída: <img class="icons-pngs" src="assets/imgs/dinheiro-icon.png" alt=""></h2>
         <div id="inputs-entrada-e-saida-infos-container">
             <div>
                 <label for="categoria">Descrição:</label>
@@ -111,7 +111,7 @@
         <div id="relatorios-container">
             <h1>Relatórios:</h1>
 
-            <h2><span id="span-saidas-categorias">Saídas por categorias</span> no mês:</h2>
+            <h2><span id="span-saidas-categorias"><span id="saidas-titulo">Saídas</span> por categorias</span> no mês:</h2>
 
             <div class="table-container">
                 <table>
@@ -130,7 +130,7 @@
                 </table>
             </div>
 
-            <h2>Dados:</h2>
+            <h2>Dados Geral:</h2>
             <div id="resumo-do-mes-container">
                 <div id="saldo-total-do-mes-container" class="saldos-totais-do-mes-containers">
                     <h2>Saldo do mês:</h2>
@@ -160,10 +160,10 @@
                     <h2>Gastos por classe de categoria:</h2>
                     <div id="loader-gastos-por-classes">
                         <div id="essencial-total-container">
-                            <span id="essencial-total">Essencial (30%)</span>
+                            <span id="essencial-total">Essencial (40%)</span>
                         </div>
                         <div id="nao-essencial-total-container">
-                            <span id="nao-essencial-total">Não Essencial (70%)</span>
+                            <span id="nao-essencial-total">Não Essencial (60%)</span>
                         </div>
                     </div>
                 </div>

@@ -15,10 +15,6 @@
     --cor-verde: rgb(0, 189, 0);
 }
 
-.hide{
-    display: none !important;
-}
-
 body{
     background-color: whitesmoke;
     padding: 0px 0px 20px 0px;
@@ -63,6 +59,32 @@ hr{
     margin-bottom: 30px;
 }
 
+/* Classes Geral*/
+
+.hide{
+    display: none !important;
+}
+
+.tipo-entrada, .tipo-saida{
+    border-radius: 100%;
+    color: white;
+}
+
+.tipo-saida{
+    background-color: red;
+}
+
+.tipo-entrada{
+    background-color: var(--cor-verde);
+}
+
+.valor-entrada{
+    color: var(--cor-verde) !important;
+}
+
+.valor-saida{
+    color: red !important;
+}
 
 /* Main */
 
@@ -292,19 +314,6 @@ table tr td,th{
 .saldos-totais-do-mes-containers div p{
     font-size: 20px;
     font-weight: bold;
-}
-
-.tipo-entrada, .tipo-saida{
-    border-radius: 100%;
-    color: white;
-}
-
-.tipo-saida{
-    background-color: red;
-}
-
-.tipo-entrada{
-    background-color: var(--cor-verde);
 }
 
 /* Gastos por classes categorias */

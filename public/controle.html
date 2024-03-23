@@ -35,7 +35,7 @@
             </div>
             <div>
                 <label for="input-valor">Valor:</label>
-                <input type="number" id="input-valor">
+                <input type="number" step="0.1" id="input-valor">
             </div>
             <div>
                 <label for="select-categoria">Categoria:</label>
@@ -79,6 +79,7 @@
                     <option value="Entrada">Entrada</option>
                     <option value="Saída">Saída</option>
                     <option value="Valor">Valor</option>
+                    <option value="Valor decrescente">Valor decrescente</option>
                 </select>
             </div>
             <div>
@@ -104,15 +105,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Teste</td>
-                        <td>Teste</td>
-                        <td>Teste</td>
-                        <td>12/09/2002</td>
-                        <td>Entrada</td>
-                        <td>R$ 2000,00</td>
-                        <td>Excluir</td>
-                    </tr>
+                    <!-- Dados -->
                 </tbody>
             </table>
         </div>
@@ -135,7 +128,7 @@
                     <tbody>
                         <tr>
                             <td>Teste</td>
-                            <td>R$ 2000,00</td>
+                            <td class="valor-saida">R$ -2000,00</td>
                         </tr>
                     </tbody>
                 </table>
@@ -146,7 +139,7 @@
                 <div id="saldo-total-do-mes-container" class="saldos-totais-do-mes-containers">
                     <h2>Saldo do mês:</h2>
                     <div>
-                        <p id="saldo-total">R$ 2000</p>
+                        <p id="saldo-total" class="valor-entrada">R$ 2000</p>
                         <span class="material-symbols-outlined tipo-entrada">expand_circle_up</span>
                     </div>
                 </div>
@@ -154,7 +147,7 @@
                 <div id="saldo-total-entradas-do-mes-container" class="saldos-totais-do-mes-containers">
                     <h2>Entradas do mês:</h2>
                     <div>
-                        <p id="saldo-total-entradas">R$ 2000</p>
+                        <p id="saldo-total-entradas" class="valor-entrada">R$ 2000</p>
                         <span class="material-symbols-outlined tipo-entrada">expand_circle_up</span>
                     </div>
                 </div>
@@ -162,7 +155,7 @@
                 <div id="saldo-total-saidas-do-mes-container" class="saldos-totais-do-mes-containers">
                     <h2>Saídas do mês:</h2>
                     <div>
-                        <p id="saldo-total-saidas">R$ 2000</p>
+                        <p id="saldo-total-saidas" class="valor-saida">R$ 2000</p>
                         <span class="material-symbols-outlined tipo-saida">expand_circle_down</span>
                     </div>
                 </div>
@@ -185,9 +178,12 @@
 
     <script type="module" src="assets/js/firebaseConfig.js"></script>
     <script type="module" src="assets/js/redirectUserNotAuth.js"></script>
-    <script type="module" src="assets/js/inicial.js"></script>
-    
+    <script type="module" src="assets/js/carregarPerfil.js"></script>
 
-    <script src=""></script>
+    <script type="module" src="assets/js/controle/inicialControle.js"></script>
+    <script type="module" src="assets/js/controle/adicionarEntradaESaida.js"></script>
+    <script type="module" src="assets/js/controle/atualizarTabelasEDadosFinanceiros.js"></script>
+    <script type="module" src="assets/js/controle/apagarEntradaESaida.js"></script>
+    <script type="module" src="assets/js/controle/ordernarTabela.js"></script>
 </body>
 </html>

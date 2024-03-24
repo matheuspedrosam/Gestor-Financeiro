@@ -183,7 +183,6 @@ function atualizarSaidasPorCategorias(queryEntradasESaidas, categorias){
 
 
 function atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias){
-    console.log(categorias)
     let naoEssencialTotal = 0;
     let essencialTotal = 0
     for (let categoria of categorias){

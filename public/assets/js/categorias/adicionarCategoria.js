@@ -6,8 +6,8 @@ import { atualizarTabelaCategoria } from "./atualizarTabelaCategorias.js";
 const db = getFirestore(app);
 const auth = await getAuth();
 
-const inputCategoria = document.querySelector("#input-categoria")
-const selectClasseCategoria = document.querySelector("#select-categoria-classe")
+const inputCategoria = document.querySelector("#input-categoria");
+const selectClasseCategoria = document.querySelector("#select-categoria-classe");
 
 function validarInputCategoria(categoria){
     if(categoria == "") return false;
@@ -18,11 +18,11 @@ function validarInputCategoria(categoria){
     return true;
 }
 
-const btnAdicionarCategoria = document.querySelector("#btn-adicionar-categoria")
+const btnAdicionarCategoria = document.querySelector("#btn-adicionar-categoria");
 
 btnAdicionarCategoria.addEventListener("click", async () => {
-    const $nomeCategoriaParaEnviarBanco = inputCategoria.value
-    const $selectClasseCategoriaParaEnviarBanco = selectClasseCategoria.value
+    const $nomeCategoriaParaEnviarBanco = inputCategoria.value;
+    const $selectClasseCategoriaParaEnviarBanco = selectClasseCategoria.value;
     
     if(validarInputCategoria(inputCategoria.value)){
         auth.onAuthStateChanged(async (userCredentials) => {
@@ -33,13 +33,13 @@ btnAdicionarCategoria.addEventListener("click", async () => {
                 });
         })
         
-        alert("Categoria adicionada com sucesso!")
+        alert("Categoria adicionada com sucesso!");
         
         atualizarTabelaCategoria();
 
-        inputCategoria.value = ""
+        inputCategoria.value = "";
     } else{
-        alert("Dados inseridos Inválidos!")
+        alert("Dados inseridos Inválidos!");
     }
 
 })

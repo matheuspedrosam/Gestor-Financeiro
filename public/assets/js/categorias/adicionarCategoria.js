@@ -12,7 +12,7 @@ const selectClasseCategoria = document.querySelector("#select-categoria-classe")
 function validarInputCategoria(categoria){
     if(categoria == "") return false;
     
-    let apenasLetrasRegexp = /^[a-záàâãéèêíïóôõöúçñ ]+$/i;
+    let apenasLetrasRegexp = /^[a-záàâãéèêíïóôõöúçñ ()]+$/i;
     if(!apenasLetrasRegexp.test(categoria)) return false;
 
     return true;
@@ -28,7 +28,7 @@ btnAdicionarCategoria.addEventListener("click", async () => {
         auth.onAuthStateChanged(async (userCredentials) => {
             await addDoc(collection(db, "Categorias"), {
                     userID: userCredentials.uid,
-                    nome: $nomeCategoriaParaEnviarBanco.trimLeft().trimRight(),
+                    nome: $nomeCategoriaParaEnviarBanco.trimStart().trimEnd(),
                     classe: $selectClasseCategoriaParaEnviarBanco
                 });
         })

@@ -127,7 +127,6 @@ function atualizarDadosGerais(queryEntradasESaidas){
         iconSpanSaldoTotal.classList.remove("tipo-saida")
         iconSpanSaldoTotal.classList.add("tipo-entrada")
     } else if(total < 0) {
-        console.log(iconSpanSaldoTotal)
         saldoTotalDoMesContainer.style.border = "1px solid red"
         spanSaldoTotal.classList.remove("valor-entrada")
         spanSaldoTotal.classList.add("valor-saida")

@@ -19,6 +19,11 @@ function validarDados(){
     if(observacaoInput.value.length > 50) return false;
     
     if(categoriaSelect.value == "escolha") return false;
+
+    let regexp = /\./ 
+    if(regexp.test(valorInput.value)){
+        if(valorInput.value.split(".")[1].length > 2) return false;
+    }
     
     if(tipoSelect.value == "entrada" && valorInput.value < 0) return false;
 
@@ -45,7 +50,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
     event.preventDefault();
     const $descricaoInputParaEnviarBanco = formatarString(descricaoInput.value)
     const $observacaoInputParaEnviarBanco = formatarString(observacaoInput.value)
-    const $valorInputParaEnviarBanco = valorInput.value
+    const $valorInputParaEnviarBanco = Number(valorInput.value)
     const $categoriaSelectParaEnviarBanco = categoriaSelect.classList.value
     const $tipoSelectParaEnviarBanco = tipoSelect.value
     const $dataInputParaEnviarBanco = dataInput.value

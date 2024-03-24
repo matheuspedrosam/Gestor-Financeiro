@@ -7,6 +7,8 @@ export function loaderAnimationON(){
 }
 
 export function loaderAnimationOFF(){
-    table.classList.remove("hide");
-    loader.classList.add("hide");
+    setTimeout(() => {
+        table.classList.remove("hide");
+        loader.classList.add("hide");
+    }, 500)
 }

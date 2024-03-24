@@ -4,7 +4,7 @@ const ordernarSelect = document.querySelector("#ordernar-select")
 
 const btnAtualizarTabela = document.querySelector("#atualizar-tabela-btn")
 
-btnAtualizarTabela.addEventListener("click", async (event) => {
+btnAtualizarTabela.addEventListener("click", async () => {
 
     let ordem;
     let desc;
@@ -45,5 +45,5 @@ btnAtualizarTabela.addEventListener("click", async (event) => {
     }
     
 
-    atualizarTabelasEDadosFinanceiro(ordem, desc);
+    await atualizarTabelasEDadosFinanceiro(ordem, desc);
 })

@@ -10,6 +10,6 @@ tableBodyFinanceiro.addEventListener("click", async (event) => {
     if(event.target.innerText == "Excluir"){
         await deleteDoc(doc(db, "EntradasESaidas", event.target.parentNode.id));
         document.querySelector("#ordernar-select").value = "Escolha"
-        atualizarTabelasEDadosFinanceiro("descricao", "");
+        atualizarTabelasEDadosFinanceiro("data", "");
     }
 })

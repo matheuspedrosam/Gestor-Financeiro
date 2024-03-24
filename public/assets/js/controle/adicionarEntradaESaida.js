@@ -68,7 +68,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
                 valor: $valorInputParaEnviarBanco,
                 categoria: doc(db, "Categorias", $categoriaSelectParaEnviarBanco),
                 tipo: $tipoSelectParaEnviarBanco,
-                data: new Date(`${$dataInputParaEnviarBanco} 00:00:00`),
+                data: new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`),
                 mes: tratarData(new Date($dataInputParaEnviarBanco)).mes,
                 ano: tratarData(new Date($dataInputParaEnviarBanco)).ano 
             });
@@ -76,14 +76,14 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
         
         alert("Dados Adicionados com sucesso!");
 
-        document.querySelector("#ordernar-select").value = "Escolha"
-        atualizarTabelasEDadosFinanceiro("descricao", "");
+        document.querySelector("#ordernar-select").value = "Escolha";
+        atualizarTabelasEDadosFinanceiro("data", "");
 
-        descricaoInput.value = ""
-        observacaoInput.value = ""
-        valorInput.value = ""
-        categoriaSelect.value = "escolha"
-        tipoSelect.value = "entrada"
+        descricaoInput.value = "";
+        observacaoInput.value = "";
+        valorInput.value = "";
+        categoriaSelect.value = "escolha";
+        tipoSelect.value = "entrada";
         dataInput.value = `${tratarData(new Date()).ano}-${tratarData(new Date()).mes}-${tratarData(new Date()).dia}`
 
     } else{

@@ -10,7 +10,7 @@ btnAtualizarTabela.addEventListener("click", async () => {
     let desc;
 
     if(ordernarSelect.value == "Escolha"){
-        ordem = "descricao";
+        ordem = "data";
         desc = "";
     }else if(ordernarSelect.value == "Descrição"){
         ordem = "descricao";

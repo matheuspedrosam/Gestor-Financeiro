@@ -47,7 +47,7 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
     loaderAnimationOFF();    
 
 }
-await atualizarTabelasEDadosFinanceiro("descricao", "");
+await atualizarTabelasEDadosFinanceiro("data", "");
 
 
 // Functions:

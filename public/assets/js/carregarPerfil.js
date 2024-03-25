@@ -2,13 +2,15 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth
 
 const auth = await getAuth();
 const imgPerfil = document.querySelector("#img-perfil-container img")
+const userName = document.querySelector("#user-name")
 
 auth.onAuthStateChanged((userCredentials) => {
+    userName.innerHTML = userCredentials.email.split("@")[0]
     if (userCredentials.email == "emydoriane@gmail.com"){
-        imgPerfil.src = "https://private-user-images.githubusercontent.com/99772255/316324042-a5eef94b-1107-4e06-b294-8034d5d4b2fc.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTEyOTc5NjksIm5iZiI6MTcxMTI5NzY2OSwicGF0aCI6Ii85OTc3MjI1NS8zMTYzMjQwNDItYTVlZWY5NGItMTEwNy00ZTA2LWIyOTQtODAzNGQ1ZDRiMmZjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzI0VDE2Mjc0OVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA3Yzk0Yzg5Y2E4YTQ0NTBmMDEwMGUxYzk3OTA4NThmZjAxYmE0ZGJhOGYzMjM2ZWFlM2Y3YTUxMTRkYmQ4NzgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.wqyfGoAunROzsebmYmn4ZFPsad-ZiJiA03yRxFrMyeA"
+        imgPerfil.src = "./assets/imgs/FotoMae.png"
     } else if(userCredentials.email == "apartamentospajucara@gmail.com"){
-        imgPerfil.src = "https://private-user-images.githubusercontent.com/99772255/316324051-888e8e01-26f2-4d2d-89cc-03220044141a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTEzMTE4OTAsIm5iZiI6MTcxMTMxMTU5MCwicGF0aCI6Ii85OTc3MjI1NS8zMTYzMjQwNTEtODg4ZThlMDEtMjZmMi00ZDJkLTg5Y2MtMDMyMjAwNDQxNDFhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzI0VDIwMTk1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTlkZDNhNmFmNzcxNTk2ZGJkMmUyNjQ2NzA4MDJkYjg0MTdjNDRlNGE4N2RkNzM0MDJkOTAwMjhkY2Q1Zjk5NDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.GVqebvIcDEZyK9ARxkIzzdNxb_wdiSQWgdmeZwww76k"
+        imgPerfil.src = "./assets/imgs/ApartamentosPajucara.png"
     } else{
-        imgPerfil.src = "https://cdn-icons-png.flaticon.com/512/2098/2098439.png"
+        imgPerfil.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     }
 })

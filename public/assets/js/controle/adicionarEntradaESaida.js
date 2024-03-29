@@ -73,7 +73,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
                 ano: tratarData(new Date($dataInputParaEnviarBanco)).ano 
             });
         })
-        
+
         alert("Dados Adicionados com sucesso!");
 
         document.querySelector("#ordernar-select").value = "Escolha";
@@ -84,7 +84,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
         valorInput.value = "";
         categoriaSelect.value = "escolha";
         tipoSelect.value = "entrada";
-        dataInput.value = `${tratarData(new Date()).ano}-${tratarData(new Date()).mes}-${tratarData(new Date()).dia}`
+        // dataInput.value = `${tratarData(new Date()).ano}-${tratarData(new Date()).mes}-${tratarData(new Date()).dia}` // Em vez de tratar a data já irei deixar ela (geralmente será adicionado +1 gasto por dia)
 
     } else{
         alert("Dados Inválidos!");

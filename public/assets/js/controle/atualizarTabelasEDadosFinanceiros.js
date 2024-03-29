@@ -39,8 +39,8 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
         const queryEntradasESaidas = await getDocs(q);
 
         atualizarTabelaFinanceiro(queryEntradasESaidas, categorias);
-        atualizarDadosGerais(queryEntradasESaidas);
         atualizarSaidasPorCategorias(queryEntradasESaidas, categorias);
+        atualizarDadosGerais(queryEntradasESaidas);
         atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias);
     })
 
@@ -52,7 +52,7 @@ await atualizarTabelasEDadosFinanceiro("data", "");
 
 // Functions:
 
-async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias){
+export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias){
     queryEntradasESaidas.forEach(async (entradasESaidas) => {
 
         let data = new Date(entradasESaidas.data().data.seconds * 1000);
@@ -85,6 +85,14 @@ async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias){
                 categoriaNome = categoria.nome;
             }
         }
+
+        if(!categoriaNome){ //Caso a categoria tenha sido Excluida:
+            categoriaNome = `
+                <span style='background: rgba(0, 0, 0, 0.15); padding: 5px; border-radius: 5px;'>
+                    Você Excluiu Essa Categoria ❗
+                </span>
+            `
+        }
         
         tableBodyFinanceiro.innerHTML += `
             <tr id="${entradasESaidas.id}">
@@ -101,7 +109,7 @@ async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias){
 }
 
 
-function atualizarDadosGerais(queryEntradasESaidas){
+export function atualizarDadosGerais(queryEntradasESaidas){
     let total = 0
     let totalEntradas = 0
     let totalSaidas = 0
@@ -145,7 +153,7 @@ function atualizarDadosGerais(queryEntradasESaidas){
 }
 
 
-function atualizarSaidasPorCategorias(queryEntradasESaidas, categorias){
+export function atualizarSaidasPorCategorias(queryEntradasESaidas, categorias){
     for (let categoria of categorias){
         let somaTotalSaidasCategoria = 0;
 
@@ -181,7 +189,7 @@ function atualizarSaidasPorCategorias(queryEntradasESaidas, categorias){
 }
 
 
-function atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias){
+export function atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias){
     let naoEssencialTotal = 0;
     let essencialTotal = 0
     for (let categoria of categorias){
@@ -205,14 +213,27 @@ function atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias){
     let naoEssencialTotalContainer = document.querySelector("#nao-essencial-total-container")
     let spanNaoEssencialTotal = document.querySelector("#nao-essencial-total-container span")
 
-    let totalEssencialOuNao = essencialTotal + naoEssencialTotal
+    let totalEssencialOuNao = essencialTotal + naoEssencialTotal;
 
     naoEssencialTotal = naoEssencialTotal / totalEssencialOuNao * 100
     essencialTotal = essencialTotal / totalEssencialOuNao * 100
 
-    essencialTotalContainer.style.width = `${essencialTotal.toFixed(2)}%`
-    spanEssencialTotal.innerText = `Essencial (${essencialTotal.toFixed(2)}%)`
+    if(totalEssencialOuNao != 0){
+        //Essencial
+        essencialTotalContainer.style.width = `${essencialTotal.toFixed(2)}%`
+        spanEssencialTotal.innerText = `Essencial (${essencialTotal.toFixed(2)}%)`
 
-    naoEssencialTotalContainer.style.width = `${naoEssencialTotal.toFixed(2)}%`
-    spanNaoEssencialTotal.innerText = `Não Essencial (${naoEssencialTotal.toFixed(2)}%)`
+        //Não Essencial
+        naoEssencialTotalContainer.style.width = `${naoEssencialTotal.toFixed(2)}%`
+        spanNaoEssencialTotal.innerText = `Não Essencial (${naoEssencialTotal.toFixed(2)}%)`
+    } else{
+        //Essencial
+        essencialTotalContainer.style.width = `20%`
+        spanEssencialTotal.innerText = `Essencial (0%)`
+
+        //Não Essencial
+        naoEssencialTotalContainer.style.width = `20%`
+        spanNaoEssencialTotal.innerText = `Não Essencial (0%)`
+    }
+
 }

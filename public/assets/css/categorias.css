@@ -211,16 +211,18 @@ table tr td,th{
 
 /* Media Queries */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1024px) {    
     body{
         padding: 0px;
     }
-
+    
     select{
         background-color: white;
         height: 30px;
     }
+}
 
+@media screen and (max-width: 500px) {    
     #main-title{
         font-size: 25px;
     } 
@@ -233,7 +235,9 @@ table tr td,th{
         font-size: 14px;
         overflow-x: scroll;
     }
+    
 }
+
 
 /* Animations */
 

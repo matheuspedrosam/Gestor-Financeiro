@@ -10,7 +10,9 @@ auth.onAuthStateChanged((userCredentials) => {
         imgPerfil.src = "./assets/imgs/FotoMae.png"
     } else if(userCredentials.email == "apartamentospajucara@gmail.com"){
         imgPerfil.src = "./assets/imgs/ApartamentosPajucara.png"
-    } else{
+    } else if(userCredentials.email == "juliasalbq@gmail.com"){
+        imgPerfil.src = "./assets/imgs/FotoJulia.jpg"
+    } else {
         imgPerfil.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     }
 })

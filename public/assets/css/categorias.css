@@ -211,7 +211,7 @@ table tr td,th{
 
 /* Media Queries */
 
-@media screen and (max-width: 1024px) {    
+@media screen and (max-width: 1200px) {    
     body{
         padding: 0px;
     }
@@ -225,7 +225,7 @@ table tr td,th{
 @media screen and (max-width: 500px) {    
     #main-title{
         font-size: 25px;
-    } 
+    }
     
     #main-sub-title{
         font-size: 18px;

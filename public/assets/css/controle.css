@@ -366,7 +366,7 @@ table tr td,th{
 
 /* Media Queries */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
     body{
         padding: 0px;
     }
@@ -384,10 +384,6 @@ table tr td,th{
     select{
         height: 31px;
         background-color: white;
-    }
-    
-    #inputs-entrada-e-saida-infos-container{
-        grid-template-columns: 1fr 1fr;
     }
     
     #input-data, #mes-tabela-input{
@@ -435,6 +431,10 @@ table tr td,th{
 
     h2{
         font-size: 20px;
+    }
+
+    #inputs-entrada-e-saida-infos-container{
+        grid-template-columns: 1fr 1fr;
     }
 
     .table-container{

@@ -69,8 +69,8 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
                 categoria: doc(db, "Categorias", $categoriaSelectParaEnviarBanco),
                 tipo: $tipoSelectParaEnviarBanco,
                 data: new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`),
-                mes: tratarData(new Date($dataInputParaEnviarBanco)).mes,
-                ano: tratarData(new Date($dataInputParaEnviarBanco)).ano 
+                mes: tratarData(new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)).mes,
+                ano: tratarData(new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)).ano 
             });
         })
 

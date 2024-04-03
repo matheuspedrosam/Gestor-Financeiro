@@ -8,8 +8,13 @@ const tableBodyFinanceiro = document.querySelector(".table-container")
 
 tableBodyFinanceiro.addEventListener("click", async (event) => {
     if(event.target.innerText == "Excluir"){
-        await deleteDoc(doc(db, "EntradasESaidas", event.target.parentNode.id));
-        document.querySelector("#ordernar-select").value = "Escolha"
-        atualizarTabelasEDadosFinanceiro("data", "");
+        if(window.confirm(`Realmente deseja excluir ( ${event.target.parentNode.children[0].innerText} ) ?`)){
+            await deleteDoc(doc(db, "EntradasESaidas", event.target.parentNode.id));
+            document.querySelector("#ordernar-select").value = "Escolha"
+            atualizarTabelasEDadosFinanceiro("data", "");
+        } else{
+            alert("Exclusão cancelada!");
+            return;
+        }
     }
 })

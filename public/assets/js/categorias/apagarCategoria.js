@@ -7,7 +7,12 @@ const table = document.querySelector("table")
 
 table.addEventListener("click", async (event) => {
     if(event.target.innerHTML == "Excluir"){
-        await deleteDoc(doc(db, "Categorias", event.target.parentNode.id));
+        if(window.confirm(`Realmente deseja excluir a categoria ( ${event.target.parentNode.children[0].innerText} ) ?`)){
+            await deleteDoc(doc(db, "Categorias", event.target.parentNode.id));
         atualizarTabelaCategoria();
+        } else{
+            alert("Exclusão cancelada!");
+            return;
+        }
     }
 })

@@ -13,6 +13,7 @@
     --cor-azul: #24A0ED;
     --cor-vermelha: #E83F5B;
     --cor-verde: rgb(0, 189, 0);
+    --cor-azul-investimento: #01E5EE;
 }
 
 body{
@@ -65,7 +66,7 @@ hr{
     display: none !important;
 }
 
-.tipo-entrada, .tipo-saida{
+.tipo-entrada, .tipo-saida, .tipo-investimento, .tipo-error{
     border-radius: 100%;
     color: white;
 }
@@ -74,8 +75,20 @@ hr{
     background-color: red;
 }
 
-.tipo-entrada{
+.tipo-entrada{ 
     background-color: var(--cor-verde);
+}
+
+.tipo-error{
+    background-color: rgb(157, 192, 0);
+}
+
+.tipo-investimento{
+    font-size: 14px;
+    padding: 2px;
+    background-color: #042940;
+    border: 2px solid white;
+    outline: 2px solid #042940;
 }
 
 .valor-entrada{
@@ -270,6 +283,12 @@ table tr td,th{
     border-radius: 5px;
 }
 
+#investimentos-titulo{
+    background-color: #01e6ee50;
+    padding: 3px;
+    border-radius: 5px;
+}
+
 /* Resumo saídas, entradas e saldo */
 
 #resumo-do-mes-container{
@@ -334,9 +353,10 @@ table tr td,th{
     font-size: 20px;
     border-right: 1px solid lightgray;
     box-shadow: 0px 0px 4px 1px lightgray;
+    white-space: nowrap;
 }
 
-#essencial-total-container, #nao-essencial-total-container{
+#essencial-total-container, #nao-essencial-total-container, #investimento-total-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -345,26 +365,38 @@ table tr td,th{
 }
 
 #essencial-total-container{
-    width: 40%;
+    width: 10%;
     border-radius: 5px 0px 0px 5px;
     background-color: var(--cor-azul);
 }
 
 #nao-essencial-total-container{
-    width: 61%;
-    border-radius: 0px 5px 5px 0px;
+    width: 10%;
     background-color: rgba(0, 255, 255, 0.5);
 }
 
-#essencial-total-container span, #nao-essencial-total-container span{
+#investimento-total-container{
+    width: 10%;
+    background-color: var(--cor-azul-investimento);
+    border-radius: 0px 5px 5px 0px;
+}
+
+#essencial-total-container span, #nao-essencial-total-container span, #investimento-total-container span{
     background-color: rgba(0, 0, 0, 0.25);
     padding: 5px;
     border-radius: 5px;
     color: white;
+    z-index: 2;
 }
 
 
 /* Media Queries */
+
+@media print {
+    header, #img-and-logout-btn-container, #main-title, #main-sub-title, #inputs-entrada-e-saida-infos-container, button, #input-visualizar-tabela-mes-e-ordernar-container :nth-child(1){
+        display: none;
+    }
+}
 
 @media screen and (max-width: 1200px) {
     body{

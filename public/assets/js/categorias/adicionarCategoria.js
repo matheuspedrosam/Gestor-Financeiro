@@ -9,11 +9,14 @@ const auth = await getAuth();
 
 const inputCategoria = document.querySelector("#input-categoria");
 const selectClasseCategoria = document.querySelector("#select-categoria-classe");
+const inputGastosCategoria = document.querySelector("#input-gastos-categoria");
 
 async function validarInputCategoria(categoria, userCredentials){
     if(categoria == "") return false;
+
+    if(categoria.length > 40) return false;
     
-    let apenasLetrasRegexp = /^[a-záàâãéèêíïóôõöúçñ ()]+$/i;
+    let apenasLetrasRegexp = /^[a-záàâãéèêíïóôõöúçñ ()/]+$/i;
     if(!apenasLetrasRegexp.test(categoria)) return false;
 
     const categoriasComMesmoNome = [];
@@ -27,6 +30,13 @@ async function validarInputCategoria(categoria, userCredentials){
     
     if(categoriasComMesmoNome.length > 0) return false;
 
+    if(inputGastosCategoria.value){
+        let apenasNumerosRegexp = /^[0-9]+$/i;
+        if(!apenasNumerosRegexp.test(inputGastosCategoria.value)) return false;
+    }
+
+    if(inputGastosCategoria.value < 0 || inputGastosCategoria.value.length > 12) return false;
+
     return true;
 }
 
@@ -35,26 +45,38 @@ const btnAdicionarCategoria = document.querySelector("#btn-adicionar-categoria")
 btnAdicionarCategoria.addEventListener("click", async () => {
     const $nomeCategoriaParaEnviarBanco = formatarString(inputCategoria.value);
     const $selectClasseCategoriaParaEnviarBanco = selectClasseCategoria.value;
+    const $metaGastoDaCategoriaParaEnviarBanco = inputGastosCategoria.value;
     
     auth.onAuthStateChanged(async (userCredentials) => {
 
         if(await validarInputCategoria(inputCategoria.value, userCredentials)){
-
-            const retorno = await addDoc(collection(db, "Categorias"), {
+            let retorno;
+            if($metaGastoDaCategoriaParaEnviarBanco == ""){
+                retorno = await addDoc(collection(db, "Categorias"), {
+                        userID: userCredentials.uid,
+                        nome: $nomeCategoriaParaEnviarBanco,
+                        classe: $selectClasseCategoriaParaEnviarBanco,
+                });
+            } else {
+                retorno = await addDoc(collection(db, "Categorias"), {
                     userID: userCredentials.uid,
                     nome: $nomeCategoriaParaEnviarBanco,
-                    classe: $selectClasseCategoriaParaEnviarBanco
-            });
+                    classe: $selectClasseCategoriaParaEnviarBanco,
+                    metaGasto: Number($metaGastoDaCategoriaParaEnviarBanco)
+                });
+            }
+
 
             //Isso vai evitar ler varios dados sempre que adicionar. (Em vez de chamar a função atualizar tabela inteira)
-            const categoriaAdicionada = await getDoc(doc(db, "Categorias", retorno._key.path.segments[1]))
+            // const categoriaAdicionada = await getDoc(doc(db, "Categorias", retorno._key.path.segments[1]))
 
-            inserirDadosNaTabela(categoriaAdicionada);
+            // inserirDadosNaTabela(categoriaAdicionada);
             
+            atualizarTabelaCategoria();
             alert("Categoria adicionada com sucesso!");
             inputCategoria.value = "";
+            inputGastosCategoria.value = "";
             
-            // atualizarTabelaCategoria();
         } else{
             alert("Dados inseridos Inválidos!");
         }

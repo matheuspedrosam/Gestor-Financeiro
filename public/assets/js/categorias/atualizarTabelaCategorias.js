@@ -1,4 +1,4 @@
-import { getFirestore, collection, getDocs, where, query } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, where, query, orderBy } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 import { app } from "../firebaseConfig.js";
 import { inserirDadosNaTabela } from "./functions/inserirDadosNaTabela.js";
@@ -15,7 +15,7 @@ export function atualizarTabelaCategoria(){
     loaderAnimationON();
 
     auth.onAuthStateChanged(async (userCredentials) => {
-        const q = await query(collection(db, "Categorias"), where("userID", "==", userCredentials.uid))
+        const q = await query(collection(db, "Categorias"), where("userID", "==", userCredentials.uid), orderBy("nome"))
         const querySnapshot = await getDocs(q);
     
         querySnapshot.forEach((categoria) => {

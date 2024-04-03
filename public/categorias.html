@@ -27,11 +27,11 @@
         <h2 id="main-sub-title">Adicionar Categoria de Gastos: <img class="icons-pngs" src="assets/imgs/dinheiro-icon.png" alt=""></h2>
         <div id="input-categoria-container">
             <label for="input-categoria">Nome:</label>
-            <input type="text" id="input-categoria">
+            <input type="text" id="input-categoria" class="input-categoria">
         </div>
         <div id="select-categoria-classe-container">
             <label for="select-categoria-classe">Qual a classe dessa categoria?:</label>
-            <select name="" id="select-categoria-classe">
+            <select name="" id="select-categoria-classe" class="select-categoria-classe">
                 <option value="Essencial">Essencial</option>
                 <option value="Não Essencial">Não Essencial</option>
                 <option value="Investimento">Investimento</option>
@@ -39,13 +39,43 @@
         </div>
         <div id="input-gastos-categoria-container">
             <label for="input-gastos-categoria">Meta de gastos / Investimentos (OPCIONAL):</label>
-            <input type="number" id="input-gastos-categoria">
+            <input type="number" id="input-gastos-categoria" class="input-gastos-categoria">
         </div>
         <div>
             <button id="btn-adicionar-categoria">Adicionar Categoria</button>
         </div>
 
         <hr>
+
+        <div id="modal-container" class="hide">
+            <div id="modal-editar">
+                <div id="close-btn">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+
+                <div id="input-categoria-container">
+                    <label for="input-editar-categoria">Nome:</label>
+                    <input type="text" id="input-editar-categoria" class="input-categoria">
+                </div>
+                <div id="select-categoria-classe-container">
+                    <label for="select-editar-categoria-classe">Qual a classe dessa categoria?:</label>
+                    <select name="" id="select-editar-categoria-classe" class="select-categoria-classe">
+                        <option value="Essencial">Essencial</option>
+                        <option value="Não Essencial">Não Essencial</option>
+                        <option value="Investimento">Investimento</option>
+                    </select>
+                </div>
+                <div id="input-gastos-categoria-container">
+                    <label for="input-editar-gastos-categoria">Meta de gastos / Investimentos (OPCIONAL):</label>
+                    <input type="number" id="input-editar-gastos-categoria" class="input-gastos-categoria">
+                </div>
+                <div>
+                    <button id="btn-atualizar-categoria">Atualizar Categoria</button>
+                </div>
+            </div>
+        </div>
 
         <div id="loader" class="hide"></div>
 
@@ -58,6 +88,7 @@
                         <th>Nome</th>
                         <th>Classe</th>
                         <th>Meta de Gasto / Investimento</th>
+                        <th>Editar (?)</th>
                         <th>Excluir (?)</th>
                     </tr>
                 </thead>
@@ -76,5 +107,6 @@
     <script type="module" src="assets/js/categorias/adicionarCategoria.js"></script>
     <script type="module" src="assets/js/categorias/atualizarTabelaCategorias.js"></script>
     <script type="module" src="assets/js/categorias/apagarCategoria.js"></script>
+    <script type="module" src="assets/js/categorias/editarCategoria.js"></script>
 </body>
 </html>

@@ -13,6 +13,7 @@ export function inserirDadosNaTabela(categoria){
             <td>${categoria.data().nome}</td>
             <td>${categoria.data().classe}</td>
             <td>${metaDeGasto}</td>
+            <td>Editar</td>
             <td>Excluir</td>
         </tr>
     `

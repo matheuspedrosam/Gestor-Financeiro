@@ -4,14 +4,14 @@ import { app } from "../firebaseConfig.js";
 import { atualizarTabelaCategoria } from "./atualizarTabelaCategorias.js";
 import { inserirDadosNaTabela } from "./functions/inserirDadosNaTabela.js";
 
-const db = getFirestore(app);
+const db = await getFirestore(app);
 const auth = await getAuth();
 
 const inputCategoria = document.querySelector("#input-categoria");
 const selectClasseCategoria = document.querySelector("#select-categoria-classe");
 const inputGastosCategoria = document.querySelector("#input-gastos-categoria");
 
-async function validarInputCategoria(categoria, userCredentials){
+export async function validarInputCategoria(categoria, inputGastosCategoria, userCredentials, editar){
     if(categoria == "") return false;
 
     if(categoria.length > 40) return false;
@@ -28,7 +28,11 @@ async function validarInputCategoria(categoria, userCredentials){
         categoriasComMesmoNome.push(dados.data().nome);
     })
     
-    if(categoriasComMesmoNome.length > 0) return false;
+    if(editar == false){
+        if(categoriasComMesmoNome.length > 0) return false;
+    } else{
+        if(categoriasComMesmoNome.length > 1) return false;
+    }
 
     if(inputGastosCategoria.value){
         let apenasNumerosRegexp = /^[0-9]+$/i;
@@ -49,7 +53,7 @@ btnAdicionarCategoria.addEventListener("click", async () => {
     
     auth.onAuthStateChanged(async (userCredentials) => {
 
-        if(await validarInputCategoria(inputCategoria.value, userCredentials)){
+        if(await validarInputCategoria(inputCategoria.value, inputGastosCategoria, userCredentials, false)){
             let retorno;
             if($metaGastoDaCategoriaParaEnviarBanco == ""){
                 retorno = await addDoc(collection(db, "Categorias"), {

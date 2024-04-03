@@ -216,6 +216,12 @@ input:focus, select:focus{
     box-shadow: 0px 0px 4px var(--cor-azul);
 }
 
+/* Modal Editar */
+
+#modal-editar{
+    background-color: bisque;
+}
+
 /* Loader */
 
 #loader{

@@ -14,6 +14,8 @@ auth.onAuthStateChanged((userCredentials) => {
         imgPerfil.src = "./assets/imgs/FotoJulia.jpg"
     } else if(userCredentials.email == "gallo14bis@gmail.com"){
         imgPerfil.src = "./assets/imgs/FotoGallo.png"
+    } else if(userCredentials.email == "matheuspedrosa2002@gmail.com"){
+        imgPerfil.src = "./assets/imgs/FotoEu.jpg"
     } else {
         imgPerfil.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     }

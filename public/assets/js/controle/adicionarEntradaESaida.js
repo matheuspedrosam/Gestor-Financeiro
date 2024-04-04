@@ -29,7 +29,7 @@ function validarDados(){
 
     if(tipoSelect.value == "saida" && valorInput.value > 0) return false;
 
-    if(new Date(dataInput.value) > new Date()) return false;
+    // if(new Date(dataInput.value) > new Date()) return false; // Permitindo enviar coisas em datas futuras agora!
     
     return true;
 }

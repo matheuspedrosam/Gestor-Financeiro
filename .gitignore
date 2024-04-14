@@ -1,6 +1,9 @@
 # FirebaseConfig;
 public/assets/js/firebaseConfig.js
 
+# FirebaseConfig;
+public/assets/js/observacoes/tinymce/
+
 # Logs
 logs
 *.log

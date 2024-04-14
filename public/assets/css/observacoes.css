@@ -36,7 +36,7 @@ h1{
 }
 
 h2{
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 label{
@@ -85,7 +85,7 @@ header button:hover{
     box-shadow: 0px 0px 4px lightgray;
 }
 
-/* Content -> */
+/* Perfil -> */
 
 #img-and-logout-btn-container{
     display: flex;
@@ -121,6 +121,8 @@ header button:hover{
     box-shadow: 0px 0px 4px rgb(0, 195, 255);
 }
 
+/* Titles */
+
 #main-title{
     margin-bottom: 25px;
 }
@@ -143,6 +145,45 @@ header button:hover{
     width: 32px;
 }
 
+/* Trocar Observacao */
+
+#input-visualizar-observacao-mes-container{
+    display: flex;
+    align-items: end;
+    gap: 0px 20px;
+    margin-bottom: 40px;
+}
+
+#mes-observacao-input{
+    border: 1px solid lightgray;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding: 6px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+#mes-observacao-input:focus{
+    outline: none;
+    box-shadow: 0px 0px 4px lightgray;
+}
+
+#atualizar-observacoes-btn{
+    background-color: #24A0ED;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 1px 1px lightgray;
+    max-width: 200px;
+}
+
+#atualizar-observacoes-btn:hover{
+    box-shadow: 0px 0px 4px #24A0ED;
+}
+
+/* TextArea Salvar */
+
 #salvar-mudancas-btn{
     margin-top: 30px;
     background-color: #24A0ED;
@@ -156,10 +197,6 @@ header button:hover{
 
 #salvar-mudancas-btn:hover{
     box-shadow: 0px 0px 4px #24A0ED;
-}
-
-textarea{
-    resize: both;
 }
 
 /* Media Queries */

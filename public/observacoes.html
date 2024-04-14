@@ -28,7 +28,18 @@
         <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
         <h2 id="main-sub-title">Observações: <span id="alerta">(Cuidado você possui alterações não salvas ⚠️)</span></h2>
 
+        <div id="input-visualizar-observacao-mes-container">
+            <div>
+                <label for="mes-observacao-input">Ver Observações do mês:</label>
+                <input type="month" id="mes-observacao-input">
+            </div>
+            <div>
+                <button id="atualizar-observacoes-btn">Atualizar</button>
+            </div>
+        </div>
+
         <textarea id="mytextarea"></textarea>
+        <div class="textarea"></div>
 
         <button id="salvar-mudancas-btn">Salvar Alterações</button>
 
@@ -40,6 +51,7 @@
     <script type="module" src="assets/js/logout.js"></script>
 
     <script src="assets/js/observacoes/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="module" src="assets/js/observacoes/inicial.js"></script>
     <script type="module" src="assets/js/observacoes/carregarESalvarTexto.js"></script>
 
 </body>

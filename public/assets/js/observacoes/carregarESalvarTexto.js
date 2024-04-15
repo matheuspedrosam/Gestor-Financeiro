@@ -5,16 +5,13 @@ import { tratarData } from "../controle/functions/tratarData.js";
 
 localStorage.clear();
 
-const textArea = document.querySelector(".textarea");
 const mesObservacaoInput = document.querySelector("#mes-observacao-input");
-
-console.log(textArea.id)
 
 const db = getFirestore(app);
 const auth = await getAuth();
 let totalAlteracoes = 0;
 
-document.querySelector("#atualizar-observacoes-btn").addEventListener("click", () => {
+mesObservacaoInput.addEventListener("change", () => {
   tinymce.activeEditor.remove("textarea");
   atualizarObservacao();
 });

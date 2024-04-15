@@ -168,20 +168,6 @@ header button:hover{
     box-shadow: 0px 0px 4px lightgray;
 }
 
-#atualizar-observacoes-btn{
-    background-color: #24A0ED;
-    border: none;
-    padding: 8px 10px;
-    border-radius: 3px;
-    color: white;
-    box-shadow: 1px 1px lightgray;
-    max-width: 200px;
-}
-
-#atualizar-observacoes-btn:hover{
-    box-shadow: 0px 0px 4px #24A0ED;
-}
-
 /* TextArea Salvar */
 
 #salvar-mudancas-btn{

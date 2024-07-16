@@ -104,6 +104,7 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
                 <td>${dataFormatada}</td>
                 <td>${spanTipo}</td>
                 <td class="${classValor}">${simbolo}${entradasESaidas.data().valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</td>
+                <td>Editar</td>
                 <td>Excluir</td>
             </tr>
         `;
@@ -281,13 +282,13 @@ export function atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, catego
     }
 
     let essencialTotalContainer = document.querySelector("#essencial-total-container")
-    let spanEssencialTotal = document.querySelector("#essencial-total-container span")
+    let spanEssencialTotal = document.querySelector("span#essencial-total")
     
     let naoEssencialTotalContainer = document.querySelector("#nao-essencial-total-container")
-    let spanNaoEssencialTotal = document.querySelector("#nao-essencial-total-container span")
+    let spanNaoEssencialTotal = document.querySelector("span#nao-essencial-total")
     
     let investimentoTotalContainer = document.querySelector("#investimento-total-container")
-    let spanInvestimentoTotal = document.querySelector("#investimento-total-container span")
+    let spanInvestimentoTotal = document.querySelector("span#investimento-total")
 
     let totalEssencialOuNaoOuInvestimento = essencialTotal + naoEssencialTotal + investimentoTotal;
 

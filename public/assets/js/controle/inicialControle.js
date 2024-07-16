@@ -20,10 +20,11 @@ const inputVisualizarTabelaDoMes = document.querySelector("#mes-tabela-input")
 inputData.value = `${ano}-${mes}-${dia}`
 inputVisualizarTabelaDoMes.value = `${ano}-${mes}`
 
-// Carregar Categorias:
+// Carregar Categorias (TANTO INPUT NORMAL COMO NO INPUT DO MODAL DE EDITAR):
 const db = getFirestore(app);
 const auth = await getAuth(app);
 const selectCategorias = document.querySelector("#select-categoria")
+const EditarselectCategorias = document.querySelector("#editar-select-categoria")
 
 auth.onAuthStateChanged(async (userCredentials) => {
 
@@ -37,13 +38,25 @@ auth.onAuthStateChanged(async (userCredentials) => {
         `
     })
 
+    querySnapshot.forEach((categoria) => {
+        EditarselectCategorias.innerHTML += `
+            <option id="${categoria.id}" value="${categoria.data().nome}">${categoria.data().nome}</option>
+        `
+    })
+
 })
 
 // Modificar Select Class:
-
 selectCategorias.addEventListener("change", () => {
     let optionID = selectCategorias.options[selectCategorias.selectedIndex].id
 
     selectCategorias.classList = ""
     selectCategorias.classList.add(optionID)
+})
+
+EditarselectCategorias.addEventListener("change", () => {
+    let optionID = EditarselectCategorias.options[EditarselectCategorias.selectedIndex].id
+
+    EditarselectCategorias.classList = ""
+    EditarselectCategorias.classList.add(optionID)
 })

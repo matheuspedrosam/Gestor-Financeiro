@@ -32,7 +32,6 @@ function atualizarObservacao(){
       docSnap.forEach((observacao) => {
           retorno = observacao.data().valor;
           localStorage.setItem("observacaoID", observacao.id);
-          console.log("entrou")
       })
     }
   
@@ -70,7 +69,6 @@ btnSalvarMudancas.addEventListener("click", async (event) => {
     let objetoAdicionado;
     auth.onAuthStateChanged(async (userCredentials) => {
       if(!localStorage.getItem("observacaoID")){
-        console.log("entrou 1")
         objetoAdicionado = await addDoc(collection(db, "Observacoes"), {
           valor: tinymce.activeEditor.getContent({ format: 'html' }),
           userID: userCredentials.uid,
@@ -79,7 +77,6 @@ btnSalvarMudancas.addEventListener("click", async (event) => {
         });
         localStorage.setItem("observacaoID", objetoAdicionado.id);
       } else {
-        console.log("entrou 2")
         await setDoc(doc(db, "Observacoes", localStorage.getItem("observacaoID")), {
           valor: tinymce.activeEditor.getContent({ format: 'html' }),
           userID: userCredentials.uid,

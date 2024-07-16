@@ -10,10 +10,21 @@
 }
 
 /* Inputs */
+#all-inputs-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#all-inputs-container input, #all-inputs-container select{
+    margin-bottom: 0px;
+}
+
 .input-categoria, .input-gastos-categoria{
     display: block;
     border: 1px solid lightgray;
-    padding: 6px 10px;
+    padding: 7px 10px;
     width: 100%;
     border-radius: 3px;
 }
@@ -21,10 +32,6 @@
 .input-categoria:focus, .select-categoria-classe:focus, .input-gastos-categoria:focus{
     outline: none;
     box-shadow: 0px 0px 4px lightgray;
-}
-
-#select-categoria-classe-container{
-    margin-bottom: 20px;
 }
 
 .select-categoria-classe{
@@ -45,45 +52,6 @@
 
 #btn-adicionar-categoria:hover, #btn-atualizar-categoria:hover{
     box-shadow: 0px 0px 4px var(--cor-azul);
-}
-
-/* Modal Editar */
-
-#modal-container{
-    display: grid;
-    grid-template-columns: minmax(200px, 600px);
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 4;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.25);
-}
-
-#modal-editar{
-    animation: down 1s ease-in-out;
-    position: relative;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0px 0px 4px lightgray;
-}
-
-#close-btn{
-    text-align: right;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-#close-btn span{
-    cursor: pointer;
-}
-
-#close-btn span:hover{
-    color: red;
 }
 
 /* Table */
@@ -120,23 +88,4 @@ table tbody tr :nth-child(4), table tbody tr :nth-child(5){
         overflow-x: scroll;
     }
     
-}
-
-
-/* Animations */
-
-@keyframes spinner {
-    from{
-        transform: rotate(0deg);
-    } to{
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes down {
-    from{
-        top: -400px;
-    } to{
-        top: 0px;
-    }
 }

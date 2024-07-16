@@ -15,6 +15,9 @@
     <!-- Header -->
     <link rel="stylesheet" href="assets/components/header/header.css">
     <script src="assets/components/header/header.js"></script>
+    <!-- Modal -->
+    <link rel="stylesheet" href="assets/components/modal/modal.css">
+    <script src="assets/components/modal/modal.js"></script>
 </head>
 <body>
     <div id="pageContainer">
@@ -66,7 +69,48 @@
                     </div>
             
                     <hr>
-            
+
+                    <!-- MODAL -->
+                    <div id="modal-container" class="hide">
+                        <component-modal id="modal-editar">
+                            <div id="inputs-entrada-e-saida-infos-container">
+                                <div>
+                                    <label for="editar-input-descricao">Descrição:</label>
+                                    <input type="text" id="editar-input-descricao" autocomplete="on">
+                                </div>
+                                <div>
+                                    <label for="editar-input-observacao">Observação:</label>
+                                    <input type="text" id="editar-input-observacao" autocomplete="on">
+                                </div>
+                                <div>
+                                    <label for="editar-input-valor">Valor:</label>
+                                    <input type="number" step="0.1" id="editar-input-valor" autocomplete="on">
+                                </div>
+                                <div>
+                                    <label for="editar-select-categoria">Categoria:</label>
+                                    <select name="" id="editar-select-categoria">
+                                        <option value="escolha">Escolha</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="editar-select-tipo">Tipo:</label>
+                                    <select name="" id="editar-select-tipo">
+                                        <option value="entrada">Entrada</option>
+                                        <option value="saida">Saída</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="editar-input-data">Data:</label>
+                                    <input type="text" id="editar-input-data" disabled>
+                                </div>
+                            </div>
+                            <div>
+                                <button id="btn-editar-entrada-ou-saida">Editar</button>
+                            </div>
+                        </component-modal>
+                    </div>
+                    <!-- Fim Modal -->
+
                     <h1>Financeiro:</h1>
                     
                     <div id="input-visualizar-tabela-mes-e-ordernar-container">
@@ -108,6 +152,7 @@
                                     <th>Data</th>
                                     <th>Tipo</th>
                                     <th>Valor</th>
+                                    <th>Editar</th>
                                     <th>Excluir (?)</th>
                                 </tr>
                             </thead>
@@ -187,15 +232,29 @@
             
                             <div id="gastos-por-classes-categorias-container">
                                 <h2>Gastos por classe de categoria:</h2>
-                                <div id="loader-gastos-por-classes">
-                                    <div id="essencial-total-container">
+                                <div id="legendContainer">
+                                    <div class="legend">
+                                        <div id="legendEssencial" class="legendBox"></div>
                                         <span id="essencial-total">Essencial (40%)</span>
                                     </div>
-                                    <div id="nao-essencial-total-container">
+                                    <div class="legend">
+                                        <div id="legendNaoEssencial" class="legendBox"></div>
                                         <span id="nao-essencial-total">Não Essencial (60%)</span>
                                     </div>
-                                    <div id="investimento-total-container">
+                                    <div class="legend">
+                                        <div id="legendInvestimento" class="legendBox"></div>
                                         <span id="investimento-total">Investimento (40%)</span>
+                                    </div>
+                                </div>
+                                <div id="loader-gastos-por-classes">
+                                    <div id="essencial-total-container">
+                                        <span id="essencial-total">(E)</span>
+                                    </div>
+                                    <div id="nao-essencial-total-container">
+                                        <span id="nao-essencial-total">(N.E)</span>
+                                    </div>
+                                    <div id="investimento-total-container">
+                                        <span id="investimento-total">(I)</span>
                                     </div>
                                 </div>
                             </div>
@@ -210,11 +269,14 @@
     <script type="module" src="assets/js/user.js"></script>
     <!-- HideAside -->
     <script src="assets/components/aside/hideAside.js"></script>
+    <!-- Modal -->
+    <script type="module" src="assets/components/modal/closeModal.js"></script>
     <!-- Controle -->
     <script type="module" src="assets/js/controle/inicialControle.js"></script>
     <script type="module" src="assets/js/controle/adicionarEntradaESaida.js"></script>
     <script type="module" src="assets/js/controle/ordernarTabela.js"></script>
     <script type="module" src="assets/js/controle/atualizarTabelasEDadosFinanceiros.js"></script>
+    <script type="module" src="assets/js/controle/editarEntradaEsaida.js"></script>
     <script type="module" src="assets/js/controle/apagarEntradaESaida.js"></script>
 </body>
 </html>

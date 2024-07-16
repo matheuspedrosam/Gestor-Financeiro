@@ -1,0 +1,46 @@
+#modal-container{
+    display: grid;
+    grid-template-columns: minmax(200px, 800px);
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+#modal-editar{
+    animation: down 1s ease-in-out !important;
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 4px lightgray;
+}
+
+#close-btn{
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#close-btn span{
+    cursor: pointer;
+}
+
+#close-btn span:hover{
+    color: red;
+}
+
+
+@keyframes down {
+    from{
+        top: -400px;
+    } to{
+        top: 0px;
+    }
+}

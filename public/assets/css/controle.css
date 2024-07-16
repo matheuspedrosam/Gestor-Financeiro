@@ -40,23 +40,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 input, select{
     display: block;
     border: 1px solid lightgray;
     padding: 6px 10px;
+    margin-bottom: 10px;
     width: 100%;
     border-radius: 3px;
 }
 
-input:focus, select:focus{
-    outline: none;
-    box-shadow: 0px 0px 4px lightgray;
-}
-
-#btn-adicionar-entrada-ou-saida{
+#btn-adicionar-entrada-ou-saida, #btn-editar-entrada-ou-saida{
     background-color: var(--cor-azul);
     border: none;
     padding: 8px 10px;
@@ -65,7 +61,7 @@ input:focus, select:focus{
     box-shadow: 1px 1px lightgray;
 }
 
-#btn-adicionar-entrada-ou-saida:hover{
+#btn-adicionar-entrada-ou-saida:hover, #btn-editar-entrada-ou-saida:hover{
     box-shadow: 0px 0px 4px var(--cor-azul);
 }
 
@@ -73,6 +69,10 @@ input:focus, select:focus{
 
 #modal-editar{
     background-color: bisque;
+}
+
+#editar-input-data{
+    cursor: not-allowed;
 }
 
 /* Mes e Ordernar Tabela */
@@ -103,7 +103,7 @@ input:focus, select:focus{
     max-height: 800px;
 }
 
-table tbody tr :nth-child(7){
+table tbody tr :nth-child(7), table tbody tr :nth-child(8){
     text-decoration: underline;
     cursor: pointer;
 }
@@ -182,6 +182,38 @@ table tbody tr :nth-child(7){
     width: 100%;
 }
 
+/* Legends */
+#legendContainer{
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.legend{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.legendBox{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+#legendEssencial{
+    background-color: var(--cor-azul);
+}
+
+#legendNaoEssencial{
+    background-color: var(--azul-claro);
+}
+
+#legendInvestimento{
+    background-color: var(--cor-azul-investimento);
+}
+
+/* Loader */
 #loader-gastos-por-classes{
     display: flex;
     border-radius: 5px;
@@ -359,15 +391,5 @@ table tbody tr :nth-child(7){
     #loader-gastos-por-classes{
         font-size: 12px;
         white-space: nowrap;
-    }
-}
-
-/* Animations */
-
-@keyframes spinner {
-    from{
-        transform: rotate(0deg);
-    } to{
-        transform: rotate(360deg);
     }
 }

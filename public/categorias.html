@@ -15,6 +15,9 @@
     <!-- Header -->
     <link rel="stylesheet" href="assets/components/header/header.css">
     <script src="assets/components/header/header.js"></script>
+    <!-- Modal -->
+    <link rel="stylesheet" href="assets/components/modal/modal.css">
+    <script src="assets/components/modal/modal.js"></script>
 </head>
 <body>
     <div id="pageContainer">
@@ -30,21 +33,23 @@
                     </div>
                     <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
                     <h2 id="main-sub-title">Adicionar Categorias: <img class="icons-pngs" src="assets/imgs/dinheiro-icon.png" alt=""></h2>
-                    <div id="input-categoria-container">
-                        <label for="input-categoria">Nome:</label>
-                        <input type="text" id="input-categoria" class="input-categoria">
-                    </div>
-                    <div id="select-categoria-classe-container">
-                        <label for="select-categoria-classe">Qual a classe dessa categoria?:</label>
-                        <select name="" id="select-categoria-classe" class="select-categoria-classe">
-                            <option value="Essencial">Essencial</option>
-                            <option value="Não Essencial">Não Essencial</option>
-                            <option value="Investimento">Investimento</option>
-                        </select>
-                    </div>
-                    <div id="input-gastos-categoria-container">
-                        <label for="input-gastos-categoria">Meta de gastos / Investimentos (OPCIONAL):</label>
-                        <input type="number" id="input-gastos-categoria" class="input-gastos-categoria">
+                    <div id="all-inputs-container">
+                        <div id="input-categoria-container">
+                            <label for="input-categoria">Nome:</label>
+                            <input type="text" id="input-categoria" class="input-categoria">
+                        </div>
+                        <div id="select-categoria-classe-container">
+                            <label for="select-categoria-classe">Qual a classe dessa categoria?:</label>
+                            <select name="" id="select-categoria-classe" class="select-categoria-classe">
+                                <option value="Essencial">Essencial</option>
+                                <option value="Não Essencial">Não Essencial</option>
+                                <option value="Investimento">Investimento</option>
+                            </select>
+                        </div>
+                        <div id="input-gastos-categoria-container">
+                            <label for="input-gastos-categoria">Meta de gastos / Investimentos (OPCIONAL):</label>
+                            <input type="number" id="input-gastos-categoria" class="input-gastos-categoria">
+                        </div>
                     </div>
                     <div>
                         <button id="btn-adicionar-categoria">Adicionar Categoria</button>
@@ -53,13 +58,7 @@
                     <hr>
             
                     <div id="modal-container" class="hide">
-                        <div id="modal-editar">
-                            <div id="close-btn">
-                                <span class="material-symbols-outlined">
-                                    close
-                                </span>
-                            </div>
-            
+                        <component-modal id="modal-editar">
                             <div id="input-categoria-container">
                                 <label for="input-editar-categoria">Nome:</label>
                                 <input type="text" id="input-editar-categoria" class="input-categoria">
@@ -79,7 +78,7 @@
                             <div>
                                 <button id="btn-atualizar-categoria">Atualizar Categoria</button>
                             </div>
-                        </div>
+                        </component-modal>
                     </div>
             
                     <div id="loader" class="hide"></div>
@@ -111,6 +110,8 @@
     <script type="module" src="assets/js/user.js"></script>
     <!-- HideAside -->
     <script src="assets/components/aside/hideAside.js"></script>
+    <!-- Modal -->
+    <script type="module" src="assets/components/modal/closeModal.js"></script>
     <!-- Categorias -->
     <script type="module" src="assets/js/categorias/inicialCategorias.js"></script>
     <script type="module" src="assets/js/categorias/adicionarCategoria.js"></script>

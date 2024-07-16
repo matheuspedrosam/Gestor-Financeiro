@@ -14,6 +14,7 @@
 :root{
     --background: #F0F4F8;
     --azul: #0A58D0;
+    --azul-claro: rgba(0, 255, 255, 0.5);
 
     --googleBorder: #d2e3fc;
     --googleBackground: rgba(66,133,244,.04);
@@ -81,7 +82,7 @@ body{
 
 /* MainContentContainer */
 #mainContentContainer{
-    padding: 0px 10px;
+    padding: 0px 20px;
     z-index: -1;
 }
 
@@ -90,7 +91,7 @@ body{
     box-shadow: 0px 0px 8px lightgray;
     background-color: white;
     padding: 20px;
-    margin: 10px 0px;
+    margin: 20px 0px;
 }
 
 /* MainTitles */
@@ -238,5 +239,14 @@ button{
         grid-template-columns: 300px 1fr;
     } to {
         grid-template-columns: 65px 1fr;
+    }
+}
+
+/* Loader */
+@keyframes spinner {
+    from{
+        transform: rotate(0deg);
+    } to{
+        transform: rotate(360deg);
     }
 }

@@ -39,10 +39,6 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
         const queryEntradasESaidas = await getDocs(q);
 
         atualizarTabelaFinanceiro(queryEntradasESaidas, categorias);
-        atualizarSaidasPorCategorias(queryEntradasESaidas, categorias);
-        atualizarInvestimentos(queryEntradasESaidas, categorias);
-        atualizarDadosGerais(queryEntradasESaidas);
-        atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias);
     })
 
     loaderAnimationOFF();    
@@ -112,214 +108,217 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
 }
 
 
+// The Code when Financeiro and Relatorio were in the same page:
+// After is just call the functions in the main function
 
-export function atualizarSaidasPorCategorias(queryEntradasESaidas, categorias){
-    for (let categoria of categorias){
-        let somaTotalSaidasCategoria = 0;
+
+// export function atualizarSaidasPorCategorias(queryEntradasESaidas, categorias){
+//     for (let categoria of categorias){
+//         let somaTotalSaidasCategoria = 0;
         
-        queryEntradasESaidas.forEach(entradasESaidas => {
-            if(categoria.id == entradasESaidas.data().categoria.id){
-                if(entradasESaidas.data().tipo == "saida"){
-                    somaTotalSaidasCategoria += entradasESaidas.data().valor;
-                }
-            }
-        })
+//         queryEntradasESaidas.forEach(entradasESaidas => {
+//             if(categoria.id == entradasESaidas.data().categoria.id){
+//                 if(entradasESaidas.data().tipo == "saida"){
+//                     somaTotalSaidasCategoria += entradasESaidas.data().valor;
+//                 }
+//             }
+//         })
         
-        categoria["somaTotalSaidasCategoria"] = somaTotalSaidasCategoria;
-    }
+//         categoria["somaTotalSaidasCategoria"] = somaTotalSaidasCategoria;
+//     }
     
-    const tableBodyRelatorio = document.querySelectorAll(".table-container tbody")[1];
-    tableBodyRelatorio.innerHTML = "";
+//     const tableBodyRelatorio = document.querySelectorAll(".table-container tbody")[1];
+//     tableBodyRelatorio.innerHTML = "";
     
-    let className = "";
-    let meta;
-    let objetivo;
-    for(let categoria of categorias){
-        if(categoria.somaTotalSaidasCategoria >= 0) {
-            className = "valor-entrada";
-        } else{
-            className = "valor-saida";
-        }
+//     let className = "";
+//     let meta;
+//     let objetivo;
+//     for(let categoria of categorias){
+//         if(categoria.somaTotalSaidasCategoria >= 0) {
+//             className = "valor-entrada";
+//         } else{
+//             className = "valor-saida";
+//         }
         
-        if(categoria.metaGasto == undefined){
-            meta = "";
-            objetivo = "";
-        } else{
-            meta = `-${categoria.metaGasto.toLocaleString("pt-BR", {style: 'currency', currency: "BRL"})}`;
+//         if(categoria.metaGasto == undefined){
+//             meta = "";
+//             objetivo = "";
+//         } else{
+//             meta = `-${categoria.metaGasto.toLocaleString("pt-BR", {style: 'currency', currency: "BRL"})}`;
             
-            if(categoria.somaTotalSaidasCategoria >= Number(`-${categoria.metaGasto}`)){
-                objetivo = "✅";
-            } else{
-                objetivo = "❌";
-            }
-        }
+//             if(categoria.somaTotalSaidasCategoria >= Number(`-${categoria.metaGasto}`)){
+//                 objetivo = "✅";
+//             } else{
+//                 objetivo = "❌";
+//             }
+//         }
         
-        if(categoria.classe != "Investimento"){
-            tableBodyRelatorio.innerHTML += `
-            <tr>
-            <td>${categoria.nome}</td>
-            <td>${categoria.classe}</td>
-            <td class="${className}">${categoria.somaTotalSaidasCategoria.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</td>
-            <td>${meta}</td>
-            <td>${objetivo}</td>
-            </tr>
-            `
-        }
-    }
-}
+//         if(categoria.classe != "Investimento"){
+//             tableBodyRelatorio.innerHTML += `
+//             <tr>
+//             <td>${categoria.nome}</td>
+//             <td>${categoria.classe}</td>
+//             <td class="${className}">${categoria.somaTotalSaidasCategoria.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</td>
+//             <td>${meta}</td>
+//             <td>${objetivo}</td>
+//             </tr>
+//             `
+//         }
+//     }
+// }
 
 
 
-function atualizarInvestimentos(queryEntradasESaidas, categorias){
-    const tableBodyInvestimentos = document.querySelectorAll(".table-container tbody")[2];
-    tableBodyInvestimentos.innerHTML = "";
+// function atualizarInvestimentos(queryEntradasESaidas, categorias){
+//     const tableBodyInvestimentos = document.querySelectorAll(".table-container tbody")[2];
+//     tableBodyInvestimentos.innerHTML = "";
 
-    let meta;
-    let objetivo;
-    let className;
-    for (let categoria of categorias){
-        if(categoria.classe == "Investimento"){
-            if(categoria.somaTotalSaidasCategoria < 0) {
-                className = "valor-entrada";
-            } else{
-                className = "valor-saida";
-            }
+//     let meta;
+//     let objetivo;
+//     let className;
+//     for (let categoria of categorias){
+//         if(categoria.classe == "Investimento"){
+//             if(categoria.somaTotalSaidasCategoria < 0) {
+//                 className = "valor-entrada";
+//             } else{
+//                 className = "valor-saida";
+//             }
             
-            if(categoria.metaGasto == undefined){
-                meta = "";
-                objetivo = "";
-            } else{
-                meta = `${categoria.metaGasto.toLocaleString("pt-BR", {style: 'currency', currency: "BRL"})}`;
+//             if(categoria.metaGasto == undefined){
+//                 meta = "";
+//                 objetivo = "";
+//             } else{
+//                 meta = `${categoria.metaGasto.toLocaleString("pt-BR", {style: 'currency', currency: "BRL"})}`;
 
-                if(categoria.somaTotalSaidasCategoria > Number(`-${categoria.metaGasto}`)){
-                    objetivo = "❌";
-                } else{
-                    objetivo = "✅";
-                }
-            }
+//                 if(categoria.somaTotalSaidasCategoria > Number(`-${categoria.metaGasto}`)){
+//                     objetivo = "❌";
+//                 } else{
+//                     objetivo = "✅";
+//                 }
+//             }
 
-            tableBodyInvestimentos.innerHTML += `
-                <tr>
-                    <td>${categoria.nome}</td>
-                    <td class="${className}">${categoria.somaTotalSaidasCategoria.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}).replace("-", "+")}</td>
-                    <td>${meta}</td>
-                    <td>${objetivo}</td>
-                </tr>
-            `
-        }
+//             tableBodyInvestimentos.innerHTML += `
+//                 <tr>
+//                     <td>${categoria.nome}</td>
+//                     <td class="${className}">${categoria.somaTotalSaidasCategoria.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}).replace("-", "+")}</td>
+//                     <td>${meta}</td>
+//                     <td>${objetivo}</td>
+//                 </tr>
+//             `
+//         }
 
-    }
+//     }
     
             
-}
+// }
 
 
             
-export function atualizarDadosGerais(queryEntradasESaidas){
-    let total = 0
-    let totalEntradas = 0
-    let totalSaidas = 0
-    queryEntradasESaidas.forEach(entradasESaidas => {
-        if(entradasESaidas.data().tipo == "entrada"){
-            totalEntradas += entradasESaidas.data().valor
-        } else if(entradasESaidas.data().tipo == "saida"){
-            totalSaidas += entradasESaidas.data().valor
-        }
-    })
-    total = totalEntradas + totalSaidas
+// export function atualizarDadosGerais(queryEntradasESaidas){
+//     let total = 0
+//     let totalEntradas = 0
+//     let totalSaidas = 0
+//     queryEntradasESaidas.forEach(entradasESaidas => {
+//         if(entradasESaidas.data().tipo == "entrada"){
+//             totalEntradas += entradasESaidas.data().valor
+//         } else if(entradasESaidas.data().tipo == "saida"){
+//             totalSaidas += entradasESaidas.data().valor
+//         }
+//     })
+//     total = totalEntradas + totalSaidas
     
 
-    const saldoTotalDoMesContainer = document.querySelector("#saldo-total-do-mes-container")
-    const spanSaldoTotal = document.querySelector("#saldo-total");
-    const iconSpanSaldoTotal = document.querySelector("#icon-saldo-total")
+//     const saldoTotalDoMesContainer = document.querySelector("#saldo-total-do-mes-container")
+//     const spanSaldoTotal = document.querySelector("#saldo-total");
+//     const iconSpanSaldoTotal = document.querySelector("#icon-saldo-total")
 
-    if(total >= 0){
-        saldoTotalDoMesContainer.style.border = "1px solid var(--cor-verde)"
-        spanSaldoTotal.classList.remove("valor-saida")
-        spanSaldoTotal.classList.add("valor-entrada")
-        iconSpanSaldoTotal.innerText = "expand_circle_up"
-        iconSpanSaldoTotal.classList.remove("tipo-saida")
-        iconSpanSaldoTotal.classList.add("tipo-entrada")
-    } else if(total < 0) {
-        saldoTotalDoMesContainer.style.border = "1px solid red"
-        spanSaldoTotal.classList.remove("valor-entrada")
-        spanSaldoTotal.classList.add("valor-saida")
-        iconSpanSaldoTotal.innerText = "expand_circle_down"
-        iconSpanSaldoTotal.classList.remove("tipo-entrada")
-        iconSpanSaldoTotal.classList.add("tipo-saida")
-    }
-    spanSaldoTotal.innerText = `${total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+//     if(total >= 0){
+//         saldoTotalDoMesContainer.style.border = "1px solid var(--cor-verde)"
+//         spanSaldoTotal.classList.remove("valor-saida")
+//         spanSaldoTotal.classList.add("valor-entrada")
+//         iconSpanSaldoTotal.innerText = "expand_circle_up"
+//         iconSpanSaldoTotal.classList.remove("tipo-saida")
+//         iconSpanSaldoTotal.classList.add("tipo-entrada")
+//     } else if(total < 0) {
+//         saldoTotalDoMesContainer.style.border = "1px solid red"
+//         spanSaldoTotal.classList.remove("valor-entrada")
+//         spanSaldoTotal.classList.add("valor-saida")
+//         iconSpanSaldoTotal.innerText = "expand_circle_down"
+//         iconSpanSaldoTotal.classList.remove("tipo-entrada")
+//         iconSpanSaldoTotal.classList.add("tipo-saida")
+//     }
+//     spanSaldoTotal.innerText = `${total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
 
 
-    const spanSaldoTotalEntradas = document.querySelector("#saldo-total-entradas");
-    const spanSaldoTotalSaidas = document.querySelector("#saldo-total-saidas");
+//     const spanSaldoTotalEntradas = document.querySelector("#saldo-total-entradas");
+//     const spanSaldoTotalSaidas = document.querySelector("#saldo-total-saidas");
 
-    spanSaldoTotalEntradas.innerText = `${totalEntradas.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
-    spanSaldoTotalSaidas.innerText = `${totalSaidas.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
-}
+//     spanSaldoTotalEntradas.innerText = `${totalEntradas.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+//     spanSaldoTotalSaidas.innerText = `${totalSaidas.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+// }
 
    
 
-export function atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias){
-    let naoEssencialTotal = 0;
-    let essencialTotal = 0
-    let investimentoTotal = 0;
-    for (let categoria of categorias){
+// export function atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias){
+//     let naoEssencialTotal = 0;
+//     let essencialTotal = 0
+//     let investimentoTotal = 0;
+//     for (let categoria of categorias){
 
-        queryEntradasESaidas.forEach((entradasESaidas) => {
-            if(entradasESaidas.data().tipo == "saida"){
-                if(entradasESaidas.data().categoria.id == categoria.id){
-                    if(categoria["classe"] == "Essencial"){
-                        essencialTotal += entradasESaidas.data().valor;
-                    } else if ( categoria["classe"] == "Não Essencial"){
-                        naoEssencialTotal += entradasESaidas.data().valor;
-                    } else if (categoria["classe"] == "Investimento"){
-                        investimentoTotal += entradasESaidas.data().valor;
-                    }
-                }
-            }
-        })
-    }
+//         queryEntradasESaidas.forEach((entradasESaidas) => {
+//             if(entradasESaidas.data().tipo == "saida"){
+//                 if(entradasESaidas.data().categoria.id == categoria.id){
+//                     if(categoria["classe"] == "Essencial"){
+//                         essencialTotal += entradasESaidas.data().valor;
+//                     } else if ( categoria["classe"] == "Não Essencial"){
+//                         naoEssencialTotal += entradasESaidas.data().valor;
+//                     } else if (categoria["classe"] == "Investimento"){
+//                         investimentoTotal += entradasESaidas.data().valor;
+//                     }
+//                 }
+//             }
+//         })
+//     }
 
-    let essencialTotalContainer = document.querySelector("#essencial-total-container")
-    let spanEssencialTotal = document.querySelector("span#essencial-total")
+//     let essencialTotalContainer = document.querySelector("#essencial-total-container")
+//     let spanEssencialTotal = document.querySelector("span#essencial-total")
     
-    let naoEssencialTotalContainer = document.querySelector("#nao-essencial-total-container")
-    let spanNaoEssencialTotal = document.querySelector("span#nao-essencial-total")
+//     let naoEssencialTotalContainer = document.querySelector("#nao-essencial-total-container")
+//     let spanNaoEssencialTotal = document.querySelector("span#nao-essencial-total")
     
-    let investimentoTotalContainer = document.querySelector("#investimento-total-container")
-    let spanInvestimentoTotal = document.querySelector("span#investimento-total")
+//     let investimentoTotalContainer = document.querySelector("#investimento-total-container")
+//     let spanInvestimentoTotal = document.querySelector("span#investimento-total")
 
-    let totalEssencialOuNaoOuInvestimento = essencialTotal + naoEssencialTotal + investimentoTotal;
+//     let totalEssencialOuNaoOuInvestimento = essencialTotal + naoEssencialTotal + investimentoTotal;
 
-    essencialTotal = (essencialTotal / totalEssencialOuNaoOuInvestimento) * 100
-    naoEssencialTotal = (naoEssencialTotal / totalEssencialOuNaoOuInvestimento) * 100
-    investimentoTotal = (investimentoTotal / totalEssencialOuNaoOuInvestimento) * 100
+//     essencialTotal = (essencialTotal / totalEssencialOuNaoOuInvestimento) * 100
+//     naoEssencialTotal = (naoEssencialTotal / totalEssencialOuNaoOuInvestimento) * 100
+//     investimentoTotal = (investimentoTotal / totalEssencialOuNaoOuInvestimento) * 100
 
-    if(totalEssencialOuNaoOuInvestimento != 0){
-        //Essencial
-        essencialTotalContainer.style.width = `${essencialTotal.toFixed(2)}%`
-        spanEssencialTotal.innerText = `Essencial (${essencialTotal.toFixed(2)}%)`
+//     if(totalEssencialOuNaoOuInvestimento != 0){
+//         //Essencial
+//         essencialTotalContainer.style.width = `${essencialTotal.toFixed(2)}%`
+//         spanEssencialTotal.innerText = `Essencial (${essencialTotal.toFixed(2)}%)`
 
-        //Não Essencial
-        naoEssencialTotalContainer.style.width = `${naoEssencialTotal.toFixed(2)}%`
-        spanNaoEssencialTotal.innerText = `Não Essencial (${naoEssencialTotal.toFixed(2)}%)`
+//         //Não Essencial
+//         naoEssencialTotalContainer.style.width = `${naoEssencialTotal.toFixed(2)}%`
+//         spanNaoEssencialTotal.innerText = `Não Essencial (${naoEssencialTotal.toFixed(2)}%)`
 
-        //Investimento
-        investimentoTotalContainer.style.width = `${investimentoTotal.toFixed(2) + 1}%`
-        spanInvestimentoTotal.innerText = `Investimentos (${investimentoTotal.toFixed(2)}%)`
-    } else{
-        //Essencial
-        essencialTotalContainer.style.width = `20%`
-        spanEssencialTotal.innerText = `Essencial (0%)`
+//         //Investimento
+//         investimentoTotalContainer.style.width = `${investimentoTotal.toFixed(2) + 1}%`
+//         spanInvestimentoTotal.innerText = `Investimentos (${investimentoTotal.toFixed(2)}%)`
+//     } else{
+//         //Essencial
+//         essencialTotalContainer.style.width = `20%`
+//         spanEssencialTotal.innerText = `Essencial (0%)`
 
-        //Não Essencial
-        naoEssencialTotalContainer.style.width = `20%`
-        spanNaoEssencialTotal.innerText = `Não Essencial (0%)`
+//         //Não Essencial
+//         naoEssencialTotalContainer.style.width = `20%`
+//         spanNaoEssencialTotal.innerText = `Não Essencial (0%)`
 
-        //Investimento
-        investimentoTotalContainer.style.width = `20%`
-        spanInvestimentoTotal.innerText = `Investimentos (0%)`
-    }
+//         //Investimento
+//         investimentoTotalContainer.style.width = `20%`
+//         spanInvestimentoTotal.innerText = `Investimentos (0%)`
+//     }
 
-}
+// }

@@ -77,7 +77,7 @@ body{
 
 #pageContainer.pageContainerAsideOpen{
     animation: asideOpen 0.4s ease-in-out;
-    grid-template-columns: minmax(100px, 300px) 1fr;
+    grid-template-columns: 300px 1fr;
 }
 
 /* MainContentContainer */
@@ -223,6 +223,27 @@ button{
     background-color: white;
     border: 1px solid lightgray;
     transition: 0.2s ease-in-out;
+}
+
+/* Media */
+
+@media screen and (max-width: 1000px){
+
+    #pageContainer.pageContainerAsideOpen #table-container, #pageContainer.pageContainerAsideOpen #table-financeiro-container{
+        overflow-x: scroll;
+    }
+
+    table{
+        font-size: 12px;
+    }
+
+    #mainContentContainer{
+        padding: 0px 10px;
+    }
+
+    section{
+        margin: 10px 0px !important;
+    }
 }
 
 /* Animations */

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/217/217853.png" type="image/x-icon">
+    <title>Dashboard | Gestor Financeiro</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="assets/css/general.css">
+    <link rel="stylesheet" href="assets/css/controle.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Aside -->
+    <link rel="stylesheet" href="assets/components/aside/aside.css">
+    <script src="assets/components/aside/aside.js"></script>
+    <!-- Header -->
+    <link rel="stylesheet" href="assets/components/header/header.css">
+    <script src="assets/components/header/header.js"></script>
+
+    <style>
+        h2{
+            margin-bottom: 15px;
+        }
+
+        #mes-tabela-input{
+            margin-bottom: 45px;
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="pageContainer">
+
+        <main-aside class="asideClosed"></main-aside>
+
+        <main>
+            <main-header></main-header>
+            <div id="mainContentContainer">
+                <section>
+                    <div id="banner-container">
+                        <img id="banner-img" src="assets/imgs/Banner Gestor.png" alt="">
+                    </div>
+                    <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
+
+                    
+                    <div id="relatorios-container">
+                        
+                        <div id="loader" class="hide"></div>
+                        
+                        <h2>Relatórios: 📈</h2>
+                        
+                        <div>
+                            <label for="mes-tabela-input">Ver Relatório do mês:</label>
+                            <input type="month" id="mes-tabela-input">
+                        </div>
+
+                        <h2><span id="span-saidas-categorias"><span id="saidas-titulo">Saídas</span> por categorias no mês (Bruto):</h2>
+            
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Categoria</th>
+                                        <th>Classe</th>
+                                        <th>Valor</th>
+                                        <th>Meta de Gasto</th>
+                                        <th>Sucesso (?)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dados -->
+                                </tbody>
+                            </table>
+                        </div>
+            
+                        <h2><span id="span-investimentos-categorias"><span id="investimentos-titulo">Investimentos</span> do mês:</h2>
+            
+                        <div id="table-investimentos-container" class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Investimento</th>
+                                        <th>Valor</th>
+                                        <th>Meta de Investimento</th>
+                                        <th>Sucesso (?)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dados -->
+                                </tbody>
+                            </table>
+                        </div>
+            
+                        <h2>Dados Geral:</h2>
+                        <div id="resumo-do-mes-container">
+                            <div id="saldo-total-do-mes-container" class="saldos-totais-do-mes-containers">
+                                <h2>Saldo do mês:</h2>
+                                <div>
+                                    <p id="saldo-total" class="valor-entrada">R$ 00,00</p>
+                                    <span id="icon-saldo-total" class="material-symbols-outlined tipo-entrada">expand_circle_up</span>
+                                </div>
+                            </div>
+            
+                            <div id="saldo-total-entradas-do-mes-container" class="saldos-totais-do-mes-containers">
+                                <h2>Entradas do mês:</h2>
+                                <div>
+                                    <p id="saldo-total-entradas" class="valor-entrada">R$ 00,00</p>
+                                    <span class="material-symbols-outlined tipo-entrada">expand_circle_up</span>
+                                </div>
+                            </div>
+            
+                            <div id="saldo-total-saidas-do-mes-container" class="saldos-totais-do-mes-containers">
+                                <h2>Saídas do mês:</h2>
+                                <div>
+                                    <p id="saldo-total-saidas" class="valor-saida">R$ 00,00</p>
+                                    <span class="material-symbols-outlined tipo-saida">expand_circle_down</span>
+                                </div>
+                            </div>
+            
+                            <div id="gastos-por-classes-categorias-container">
+                                <h2>Gastos por classe de categoria:</h2>
+                                <div id="legendContainer">
+                                    <div class="legend">
+                                        <div id="legendEssencial" class="legendBox"></div>
+                                        <span id="essencial-total">Essencial (40%)</span>
+                                    </div>
+                                    <div class="legend">
+                                        <div id="legendNaoEssencial" class="legendBox"></div>
+                                        <span id="nao-essencial-total">Não Essencial (60%)</span>
+                                    </div>
+                                    <div class="legend">
+                                        <div id="legendInvestimento" class="legendBox"></div>
+                                        <span id="investimento-total">Investimento (40%)</span>
+                                    </div>
+                                </div>
+                                <div id="loader-gastos-por-classes">
+                                    <div id="essencial-total-container">
+                                        <span id="essencial-total">(E)</span>
+                                    </div>
+                                    <div id="nao-essencial-total-container">
+                                        <span id="nao-essencial-total">(N.E)</span>
+                                    </div>
+                                    <div id="investimento-total-container">
+                                        <span id="investimento-total">(I)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- User -->
+    <script type="module" src="assets/js/user.js"></script>
+    <!-- HideAside -->
+    <script src="assets/components/aside/hideAside.js"></script>
+    <!-- Dashboard -->
+    <script type="module" src="assets/js/dashboard/inicial.js"></script>
+    <script type="module" src="assets/js/dashboard/dashboard.js"></script>
+</body>
+</html>

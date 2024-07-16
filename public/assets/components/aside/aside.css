@@ -4,7 +4,7 @@ main-aside{
     top: 0px;
     padding: 20px;
     border-right: 1px solid lightgray;
-    height: 100vh;
+    max-height: 100vh !important;
     background-color: white;
     z-index: 1;
 }

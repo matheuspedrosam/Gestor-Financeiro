@@ -19,7 +19,7 @@
 }
 
 .tipo-investimento{
-    font-size: 14px;
+    font-size: 12px !important;
     padding: 2px;
     background-color: #042940;
     border: 2px solid white;
@@ -319,8 +319,7 @@ table tbody tr :nth-child(7), table tbody tr :nth-child(8){
         display: flex;
         align-items: center;
         background-color: white;
-        min-width: 165px;
-        height: 29px;
+        height: 31px;
     }
 
     .table-container{

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[PÁGINA] | Gestor</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="assets/css/general.css">
+    <link rel="stylesheet" href="assets/css/perfil.css"> //TROCAR
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Aside -->
+    <link rel="stylesheet" href="assets/components/aside/aside.css">
+    <script src="assets/components/aside/aside.js"></script>
+    <!-- Header -->
+    <link rel="stylesheet" href="assets/components/header/header.css">
+    <script src="assets/components/header/header.js"></script>
+</head>
+<body>
+    <div id="pageContainer">
+
+        <main-aside class="asideClosed"></main-aside>
+
+        <main>
+            <main-header></main-header>
+            <div id="mainContentContainer">
+                <section></section>
+            </div>
+        </main>
+    </div>
+
+    <!-- User -->
+     <script type="module" src="assets/js/user.js"></script>
+    <!-- HideAside -->
+    <script src="assets/components/aside/hideAside.js"></script>
+    <!-- Perfil -->
+    <script type="module" src="assets/js/perfil/perfil.js"></script> //TROCAR
+</body>
+</html>

@@ -5,7 +5,7 @@ import { inserirDadosNaTabela } from "./functions/inserirDadosNaTabela.js";
 import { loaderAnimationOFF, loaderAnimationON } from "./functions/loaderAnimations.js";
 
 const db = getFirestore(app);
-const auth = await getAuth();
+const auth = await getAuth(app);
 
 const tableBody = document.querySelector("table tbody")
 

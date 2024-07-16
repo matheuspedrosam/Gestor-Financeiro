@@ -4,106 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/217/217853.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Categorias | Gestor Financeiro</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="assets/css/general.css">
     <link rel="stylesheet" href="assets/css/categorias.css">
-    <title>Gestor Financeiro | Categorias</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Aside -->
+    <link rel="stylesheet" href="assets/components/aside/aside.css">
+    <script src="assets/components/aside/aside.js"></script>
+    <!-- Header -->
+    <link rel="stylesheet" href="assets/components/header/header.css">
+    <script src="assets/components/header/header.js"></script>
 </head>
 <body>
-    <main>
-        <header>
-            <a href="controle.html"><button>Ver Controle Financeiro</button></a>
-        </header>
+    <div id="pageContainer">
 
-        <div id="img-and-logout-btn-container">
-            <div id="img-perfil-container">
-                <img src="" alt="">
+        <main-aside class="asideClosed"></main-aside>
+
+        <main>
+            <main-header></main-header>
+            <div id="mainContentContainer">
+                <section>
+                    <div id="banner-container">
+                        <img id="banner-img" src="assets/imgs/Banner Gestor.png" alt="">
+                    </div>
+                    <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
+                    <h2 id="main-sub-title">Adicionar Categorias: <img class="icons-pngs" src="assets/imgs/dinheiro-icon.png" alt=""></h2>
+                    <div id="input-categoria-container">
+                        <label for="input-categoria">Nome:</label>
+                        <input type="text" id="input-categoria" class="input-categoria">
+                    </div>
+                    <div id="select-categoria-classe-container">
+                        <label for="select-categoria-classe">Qual a classe dessa categoria?:</label>
+                        <select name="" id="select-categoria-classe" class="select-categoria-classe">
+                            <option value="Essencial">Essencial</option>
+                            <option value="Não Essencial">Não Essencial</option>
+                            <option value="Investimento">Investimento</option>
+                        </select>
+                    </div>
+                    <div id="input-gastos-categoria-container">
+                        <label for="input-gastos-categoria">Meta de gastos / Investimentos (OPCIONAL):</label>
+                        <input type="number" id="input-gastos-categoria" class="input-gastos-categoria">
+                    </div>
+                    <div>
+                        <button id="btn-adicionar-categoria">Adicionar Categoria</button>
+                    </div>
+            
+                    <hr>
+            
+                    <div id="modal-container" class="hide">
+                        <div id="modal-editar">
+                            <div id="close-btn">
+                                <span class="material-symbols-outlined">
+                                    close
+                                </span>
+                            </div>
+            
+                            <div id="input-categoria-container">
+                                <label for="input-editar-categoria">Nome:</label>
+                                <input type="text" id="input-editar-categoria" class="input-categoria">
+                            </div>
+                            <div id="select-categoria-classe-container">
+                                <label for="select-editar-categoria-classe">Qual a classe dessa categoria?:</label>
+                                <select name="" id="select-editar-categoria-classe" class="select-categoria-classe">
+                                    <option value="Essencial">Essencial</option>
+                                    <option value="Não Essencial">Não Essencial</option>
+                                    <option value="Investimento">Investimento</option>
+                                </select>
+                            </div>
+                            <div id="input-gastos-categoria-container">
+                                <label for="input-editar-gastos-categoria">Meta de gastos / Investimentos (OPCIONAL):</label>
+                                <input type="number" id="input-editar-gastos-categoria" class="input-gastos-categoria">
+                            </div>
+                            <div>
+                                <button id="btn-atualizar-categoria">Atualizar Categoria</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id="loader" class="hide"></div>
+            
+                    <h2>Categorias:</h2>
+            
+                    <div id="table-container" class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Classe</th>
+                                    <th>Meta de Gasto / Investimento</th>
+                                    <th>Editar (?)</th>
+                                    <th>Excluir (?)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Dados -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </div>
-            <div id="button-logout-container">
-                <h2 id="user-name"><!-- Dados --></h2>
-                <a href="login.html"><button id="button-logout">Sair da Conta</button></a>
-            </div>
-        </div>
-        <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
-        <h2 id="main-sub-title">Adicionar Categoria de Gastos: <img class="icons-pngs" src="assets/imgs/dinheiro-icon.png" alt=""></h2>
-        <div id="input-categoria-container">
-            <label for="input-categoria">Nome:</label>
-            <input type="text" id="input-categoria" class="input-categoria">
-        </div>
-        <div id="select-categoria-classe-container">
-            <label for="select-categoria-classe">Qual a classe dessa categoria?:</label>
-            <select name="" id="select-categoria-classe" class="select-categoria-classe">
-                <option value="Essencial">Essencial</option>
-                <option value="Não Essencial">Não Essencial</option>
-                <option value="Investimento">Investimento</option>
-            </select>
-        </div>
-        <div id="input-gastos-categoria-container">
-            <label for="input-gastos-categoria">Meta de gastos / Investimentos (OPCIONAL):</label>
-            <input type="number" id="input-gastos-categoria" class="input-gastos-categoria">
-        </div>
-        <div>
-            <button id="btn-adicionar-categoria">Adicionar Categoria</button>
-        </div>
+        </main>
+    </div>
 
-        <hr>
-
-        <div id="modal-container" class="hide">
-            <div id="modal-editar">
-                <div id="close-btn">
-                    <span class="material-symbols-outlined">
-                        close
-                    </span>
-                </div>
-
-                <div id="input-categoria-container">
-                    <label for="input-editar-categoria">Nome:</label>
-                    <input type="text" id="input-editar-categoria" class="input-categoria">
-                </div>
-                <div id="select-categoria-classe-container">
-                    <label for="select-editar-categoria-classe">Qual a classe dessa categoria?:</label>
-                    <select name="" id="select-editar-categoria-classe" class="select-categoria-classe">
-                        <option value="Essencial">Essencial</option>
-                        <option value="Não Essencial">Não Essencial</option>
-                        <option value="Investimento">Investimento</option>
-                    </select>
-                </div>
-                <div id="input-gastos-categoria-container">
-                    <label for="input-editar-gastos-categoria">Meta de gastos / Investimentos (OPCIONAL):</label>
-                    <input type="number" id="input-editar-gastos-categoria" class="input-gastos-categoria">
-                </div>
-                <div>
-                    <button id="btn-atualizar-categoria">Atualizar Categoria</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="loader" class="hide"></div>
-
-        <h2>Categorias:</h2>
-
-        <div id="table-container" class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Classe</th>
-                        <th>Meta de Gasto / Investimento</th>
-                        <th>Editar (?)</th>
-                        <th>Excluir (?)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Dados -->
-                </tbody>
-            </table>
-        </div>
-    </main>
-
-    <script type="module" src="assets/js/firebaseConfig.js"></script>
-    <script type="module" src="assets/js/redirectUserNotAuth.js"></script>
-    <script type="module" src="assets/js/carregarPerfil.js"></script>
-    <script type="module" src="assets/js/logout.js"></script>
-
+    <!-- User -->
+    <script type="module" src="assets/js/user.js"></script>
+    <!-- HideAside -->
+    <script src="assets/components/aside/hideAside.js"></script>
+    <!-- Categorias -->
+    <script type="module" src="assets/js/categorias/inicialCategorias.js"></script>
     <script type="module" src="assets/js/categorias/adicionarCategoria.js"></script>
     <script type="module" src="assets/js/categorias/atualizarTabelaCategorias.js"></script>
     <script type="module" src="assets/js/categorias/apagarCategoria.js"></script>

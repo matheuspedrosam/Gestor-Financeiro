@@ -1,63 +1,6 @@
 @charset "UTF-8";
 
-/* Generals */
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-:root{
-    --cor-azul: #24A0ED;
-}
-
-.hide{
-    display: none !important;
-}
-
-body{
-    background-color: whitesmoke;
-    padding: 0px 0px 20px 0px;
-    scroll-behavior: smooth;
-}
-
-a{
-    text-decoration: none;
-}
-
-img{
-    display: block;
-    width: 100%;
-}
-
-h1{
-    margin-bottom: 30px;
-}
-
-h2{
-    margin-bottom: 20px;
-}
-
-label{
-    display: block;
-    margin-bottom: 4px;
-}
-
-input{
-    margin-bottom: 20px;
-}
-
-button{
-    cursor: pointer;
-}
-
-hr{
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
+/* Class */
 .tipo-saida{
     border-radius: 100%;
     color: red;
@@ -66,91 +9,7 @@ hr{
     border-radius: 3px;
 }
 
-
-/* Main */
-
-main{
-    padding: 20px;
-    max-width: 1000px;
-    margin: auto;
-    background-color: white;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* Header */
-
-header{
-    margin-bottom: 30px;
-}
-
-header button{
-    padding: 6px 10px;
-    background-color: white;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    box-shadow: 1px 1px lightgray;
-}
-
-header button:hover{
-    box-shadow: 0px 0px 4px lightgray;
-}
-
-/* Content -> */
-
-#img-and-logout-btn-container{
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-#img-perfil-container{
-    width: 100px;
-    border-radius: 100%;
-    border: 1px solid black;
-}
-
-#img-perfil-container img{
-    border-radius: 100%;
-}
-
-#user-name{
-    font-size: 16px;
-}
-
-#button-logout{
-    padding: 6px 10px;
-    background-color: rgb(0, 195, 255);
-    color: white;
-    border: 1px solid rgb(0, 195, 255);
-    border-radius: 5px;
-    box-shadow: 1px 1px lightgray;
-}
-
-#button-logout:hover{
-    box-shadow: 0px 0px 4px rgb(0, 195, 255);
-}
-
-#main-title{
-    margin-bottom: 25px;
-}
-
-#main-title, #main-sub-title{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#moeda-icon{
-    width: 44px;
-}
-
-.icons-pngs{
-    width: 32px;
-}
-
 /* Inputs */
-
 .input-categoria, .input-gastos-categoria{
     display: block;
     border: 1px solid lightgray;
@@ -227,35 +86,11 @@ header button:hover{
     color: red;
 }
 
-
-/* Loader */
-
-#loader{
-    width: 150px;
-    height: 150px;
-    border-radius: 80%;
-    border-top: 10px solid #24A0ED !important;
-    border: 10px solid lightgray;
-    margin: 60px auto;
-    animation: spinner 1s infinite ease-in-out;
-}
-
 /* Table */
-
-table{
-    border-collapse: collapse;
-    width: 100%;
-}
 
 table tbody tr :nth-child(4), table tbody tr :nth-child(5){
     text-decoration: underline;
     cursor: pointer;
-}
-
-table tr td,th{
-    padding: 5px;
-    border: 1px solid black;
-    text-align: center;
 }
 
 /* Media Queries */

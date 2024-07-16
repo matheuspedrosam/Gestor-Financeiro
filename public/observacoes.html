@@ -4,51 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/217/217853.png" type="image/x-icon">
-    <script src="assets/js/observacoes/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Observações | Gestor Financeiro</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="assets/css/general.css">
     <link rel="stylesheet" href="assets/css/observacoes.css">
-    <title>Gestor Financeiro | Observações</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Aside -->
+    <link rel="stylesheet" href="assets/components/aside/aside.css">
+    <script src="assets/components/aside/aside.js"></script>
+    <!-- Header -->
+    <link rel="stylesheet" href="assets/components/header/header.css">
+    <script src="assets/components/header/header.js"></script>
 </head>
 <body>
-    <main>
-        <header>
-            <a href="controle.html"><button>Voltar para Controle</button></a>
-        </header>
+    <div id="pageContainer">
 
-        <div id="img-and-logout-btn-container">
-            <div id="img-perfil-container">
-                <img src="" alt="">
+        <main-aside class="asideClosed"></main-aside>
+
+        <main>
+            <main-header></main-header>
+            <div id="mainContentContainer">
+                <section>
+                    <div id="banner-container">
+                        <img id="banner-img" src="assets/imgs/Banner Gestor.png" alt="">
+                    </div>
+            
+                    <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
+                    <h2 id="main-sub-title">Observações: 📝<span id="alerta">(Cuidado você possui alterações não salvas ⚠️)</span></h2>
+            
+                    <div id="input-visualizar-observacao-mes-container">
+                        <div>
+                            <label for="mes-observacao-input">Ver Observações do mês:</label>
+                            <input type="month" id="mes-observacao-input">
+                        </div>
+                    </div>
+            
+                    <textarea id="mytextarea"></textarea>
+            
+                    <button id="salvar-mudancas-btn">Salvar Alterações</button>
+                </section>
             </div>
-            <div id="button-logout-container">
-                <h2 id="user-name"><!-- Dados --></h2>
-                <a href="login.html"><button id="button-logout">Sair da Conta</button></a>
-            </div>
-        </div>
+        </main>
+    </div>
 
-        <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
-        <h2 id="main-sub-title">Observações: <span id="alerta">(Cuidado você possui alterações não salvas ⚠️)</span></h2>
-
-        <div id="input-visualizar-observacao-mes-container">
-            <div>
-                <label for="mes-observacao-input">Ver Observações do mês:</label>
-                <input type="month" id="mes-observacao-input">
-            </div>
-        </div>
-
-        <textarea id="mytextarea"></textarea>
-
-        <button id="salvar-mudancas-btn">Salvar Alterações</button>
-
-    </main>
-
-    <script type="module" src="assets/js/firebaseConfig.js"></script>
-    <script type="module" src="assets/js/redirectUserNotAuth.js"></script>
-    <script type="module" src="assets/js/carregarPerfil.js"></script>
-    <script type="module" src="assets/js/logout.js"></script>
-
+    <!-- User -->
+     <script type="module" src="assets/js/user.js"></script>
+    <!-- HideAside -->
+    <script src="assets/components/aside/hideAside.js"></script>
+    <!-- Observações -->
     <script src="assets/js/observacoes/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script type="module" src="assets/js/observacoes/inicial.js"></script>
     <script type="module" src="assets/js/observacoes/carregarESalvarTexto.js"></script>
-
 </body>
 </html>

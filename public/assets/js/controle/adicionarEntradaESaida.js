@@ -58,7 +58,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
     if(validarDados()){
         
         const db = getFirestore(app);
-        const auth = await getAuth();
+        const auth = await getAuth(app);
 
         auth.onAuthStateChanged(async (userCredentials) => {
             await addDoc(collection(db, "EntradasESaidas"), {

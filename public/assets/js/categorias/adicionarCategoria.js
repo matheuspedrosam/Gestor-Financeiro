@@ -5,7 +5,7 @@ import { atualizarTabelaCategoria } from "./atualizarTabelaCategorias.js";
 import { inserirDadosNaTabela } from "./functions/inserirDadosNaTabela.js";
 
 const db = await getFirestore(app);
-const auth = await getAuth();
+const auth = await getAuth(app);
 
 const inputCategoria = document.querySelector("#input-categoria");
 const selectClasseCategoria = document.querySelector("#select-categoria-classe");

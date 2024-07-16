@@ -5,7 +5,7 @@ import { loaderAnimationON, loaderAnimationOFF } from "./functions/loaderAnimati
 import { tratarData } from "./functions/tratarData.js";
 
 const db = getFirestore(app);
-const auth = await getAuth();
+const auth = await getAuth(app);
 
 const tableBodyFinanceiro = document.querySelectorAll(".table-container tbody")[0];
 

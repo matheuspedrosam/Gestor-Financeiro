@@ -1,0 +1,54 @@
+/* Header */
+
+main-header{
+    position: sticky;
+    top: 0px;
+    padding: 15px 20px;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    z-index: 1;
+}
+
+#menuHamburguer{
+    font-size: 32px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+#menuHamburguer:hover{
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+#headerContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#headerContainer h1{
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+#headerIconsContainer{
+    display: flex;
+    gap: 10px;
+}
+
+#notificationIcon, #settingsIcon{
+    cursor: pointer;
+    user-select: none;
+    padding: 5px;
+    border: 1px solid transparent;
+}
+
+#notificationIcon:hover, #settingsIcon:hover{
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+    background-color: rgba(66,133,244,.04);
+    border: 1px solid #d2e3fc;
+    border-radius: 100%;
+}

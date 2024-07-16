@@ -1,0 +1,167 @@
+/* Aside */
+main-aside{
+    position: sticky !important;
+    top: 0px;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+    height: 100vh;
+    background-color: white;
+    z-index: 1;
+}
+
+main-aside.animationClose{
+    animation: asideClose 0.4s ease-in-out;
+}
+
+main-aside.animationOpen{
+    animation: asideClose 0.4s ease-in-out reverse;
+}
+
+#aside-logo{
+    display: none;
+    margin: 0px auto 20px auto;
+    width: 100px;
+    border-radius: 4px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 0px 0px black;
+}
+
+#aside-logo.logoAnimationOpen{
+    animation: asideLogoOpen 0.4s ease-in-out;
+    display: block;
+}
+
+#aside-logo.logoAnimationClose{
+    animation: asideLogoClose 0.4s ease-in-out;
+    display: none;
+}
+
+main-aside nav ul{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.AsideButtonsTitle{
+    margin-left: 5px;
+    color: gray;
+    font-size: 14px;
+    margin: 16px 0 5px 5px;
+}
+
+main-aside nav ul li{
+    cursor: pointer;
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 40px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    transition: 0.1s ease-in-out;
+}
+
+main-aside nav ul li:hover{
+    /* background-color: rgba(0, 0, 0, 0.03); */
+    color: var(--azul);
+    background-color: var(--googleBackground);
+    border: 1px solid var(--googleBorder);
+}
+
+main-aside nav ul li.asideCurrentButton{
+    color: var(--azul);
+    background-color: var(--googleBackground);
+    border: 1px solid var(--googleBorder);
+}
+
+.navNames{
+    font-size: 14px;
+}
+
+#userContainer{
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 85%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 20px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+#userContainer:hover{
+    background-color: rgba(66,133,244,.04);
+    /* background-color: #b3a3fc18; */
+    border: 1px solid #d2e3fc;
+}
+
+#userContainer img{
+    display: block;
+    width: 40px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 6px 1px lightgray;
+}
+
+
+/* Aside Closed */
+main-aside.asideClosed{
+    padding: 15px 5px 15px 5px;
+}
+
+main-aside.asideClosed .AsideButtonsTitle{
+    display: none;
+}
+
+main-aside.asideClosed nav ul{
+    align-items: center;
+    gap: 15px;
+}
+
+main-aside.asideClosed nav ul li{
+    transition: 0.2s ease-in-out;
+    border-radius: 100%;
+}
+
+main-aside.asideClosed .navNames{
+    display: none;
+}
+
+main-aside.asideClosed #userContainer{
+    justify-content: center;
+    border: 1px solid transparent;
+    bottom: 5px;
+}
+
+main-aside.asideClosed #userContainer:hover{
+    border: 1px solid #d2e3fc;
+}
+
+@keyframes asideLogoOpen{
+    from{
+        border-radius: 50px;
+        width: 0px;
+        display: none;
+    } to{
+        border-radius: 4px;
+        width: 100px;
+        display: block;
+    }
+}
+
+@keyframes asideLogoClose{
+    from{
+        border-radius: 4px;
+        width: 100px;
+        display: block;
+    } to{
+        border-radius: 50px;
+        width: 0px;
+        display: none;
+    }
+}

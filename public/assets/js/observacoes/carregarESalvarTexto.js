@@ -8,7 +8,7 @@ localStorage.clear();
 const mesObservacaoInput = document.querySelector("#mes-observacao-input");
 
 const db = getFirestore(app);
-const auth = await getAuth();
+const auth = await getAuth(app);
 let totalAlteracoes = 0;
 
 mesObservacaoInput.addEventListener("change", () => {

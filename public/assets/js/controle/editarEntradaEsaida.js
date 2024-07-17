@@ -26,6 +26,7 @@ tableBodyRelatorio.addEventListener("click", (event) => {
         
         editarSelectCategoria.value = event.target.parentNode.children[2].innerHTML
         let optionID = editarSelectCategoria.options[editarSelectCategoria.selectedIndex].id
+        editarSelectCategoria.classList = ""
         editarSelectCategoria.classList.add(optionID)
 
         event.target.parentNode.children[4].children[0].classList.contains("tipo-entrada") ? editarSelectTipo.value = "entrada" : editarSelectTipo.value = "saida";

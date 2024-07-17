@@ -1,4 +1,4 @@
-import { getFirestore, doc, updateDoc} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getFirestore, doc, updateDoc, collection} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import { abrirModal } from "../../components/modal/abrirModal.js";
 import { app } from "../firebaseConfig.js";
 import { atualizarTabelasEDadosFinanceiro } from "./atualizarTabelasEDadosFinanceiros.js";
@@ -25,6 +25,9 @@ tableBodyRelatorio.addEventListener("click", (event) => {
         
         
         editarSelectCategoria.value = event.target.parentNode.children[2].innerHTML
+        let optionID = editarSelectCategoria.options[editarSelectCategoria.selectedIndex].id
+        editarSelectCategoria.classList.add(optionID)
+
         event.target.parentNode.children[4].children[0].classList.contains("tipo-entrada") ? editarSelectTipo.value = "entrada" : editarSelectTipo.value = "saida";
         
         editarInputData.value = event.target.parentNode.children[3].innerHTML;
@@ -37,11 +40,13 @@ const db = getFirestore(app);
 const editarBtn = document.querySelector("#btn-editar-entrada-ou-saida");
 editarBtn.addEventListener("click", async () => {
     if(validarDados()){
+        console.log(editarSelectCategoria.value);
+        console.log(editarSelectCategoria.classList.value);
         await updateDoc(doc(db, "EntradasESaidas", $transacaoParaserEditada), {
             descricao: editarInputDescricao.value,
             observacao: editarInputObservacao.value,
             valor: Number(editarInputValor.value),
-            categoria: doc(db, "Categorias", (editarSelectCategoria.classList.value)),
+            categoria: await doc(db, 'Categorias', editarSelectCategoria.classList.value),
             tipo: editarSelectTipo.value
         });
         

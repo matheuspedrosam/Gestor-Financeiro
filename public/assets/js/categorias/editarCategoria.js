@@ -4,6 +4,7 @@ import { app } from "../firebaseConfig.js";
 import { validarInputCategoria } from "./adicionarCategoria.js";
 import { atualizarTabelaCategoria } from "./atualizarTabelaCategorias.js";
 import { abrirModal } from "../../components/modal/abrirModal.js";
+import { closeModal } from "../../components/modal/closeModal.js";
 
 const tableBody = document.querySelector("#table-container tbody")
 
@@ -49,7 +50,7 @@ atualizarCategoriaBtn.addEventListener("click", () => {
             }
             
             alert("dados Atualizados com sucesso!");
-            fecharModal();
+            closeModal();
             atualizarTabelaCategoria();
         } else{
             alert("dados inválidos!");

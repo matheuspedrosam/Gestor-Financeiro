@@ -5,7 +5,7 @@ import { app } from "../firebaseConfig.js";
 import { tratarData } from "./functions/tratarData.js";
 
 // Modificar o Header e o Aside;
-document.querySelector("main-header h1").innerHTML = "Controle";
+document.querySelector("main-header h1").innerHTML = "Transações";
 document.querySelectorAll("main-aside .asideMenuButtons")[1].classList.add("asideCurrentButton");
 
 // Inserir Datas Nos Inputs:

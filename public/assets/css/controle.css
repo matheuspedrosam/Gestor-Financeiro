@@ -227,7 +227,7 @@ table tbody tr :nth-child(7), table tbody tr :nth-child(8){
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 0px;
+    padding: 5px 0px;
     font-weight: bold;
 }
 
@@ -322,10 +322,25 @@ table tbody tr :nth-child(7), table tbody tr :nth-child(8){
         height: 31px;
     }
 
-    .table-container{
-        font-size: 14px;
-        overflow-x: scroll;
+    #table-financeiro-container table{
+        font-size: 10px !important;
     }
+
+    #table-financeiro-container .tipo-entrada, #table-financeiro-container .tipo-saida{
+        font-size: 21px !important;
+    }
+
+    #table-financeiro-container .tipo-investimento{
+        font-size: 10px !important;
+    }
+
+    .table-container table{
+        font-size: 12px !important;
+    }
+
+    /* .table-container{
+        font-size: 14px;
+    } */
 
     #resumo-do-mes-container{
         grid-template-columns: 1fr 1fr;
@@ -335,6 +350,26 @@ table tbody tr :nth-child(7), table tbody tr :nth-child(8){
     #saldo-total-do-mes-container{
         grid-column-start: 1;
         grid-column-end: 4;
+    }
+
+    /* ASIDE OPEN */
+
+    #pageContainer.pageContainerAsideOpen #resumo-do-mes-container{
+        grid-template-columns: 1fr;
+    }
+
+    #pageContainer.pageContainerAsideOpen #saldo-total-do-mes-container{
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    #pageContainer.pageContainerAsideOpen #gastos-por-classes-categorias-container{
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    #pageContainer.pageContainerAsideOpen #saldo-total-entradas-do-mes-container{
+        margin-right: 0px;
     }
 
     #saldo-total-entradas-do-mes-container{

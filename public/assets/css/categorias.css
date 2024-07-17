@@ -63,30 +63,41 @@ table tbody tr :nth-child(4), table tbody tr :nth-child(5){
 
 /* Media Queries */
 
-@media screen and (max-width: 1200px) {    
-    select{
-        height: 31px;
-        background-color: white;
-    }
-}
-
-@media screen and (max-width: 1000px){
-    #pageContainer.pageContainerAsideOpen #mainContentContainer{
-        max-width: 550px !important;
+@media screen and (max-width: 1200px){
+    /* Aside Open */
+    #pageContainer.pageContainerAsideOpen #all-inputs-container{
+        grid-template-columns: 1fr;
     }
 
+    #pageContainer.pageContainerAsideOpen #input-gastos-categoria-container{
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+    
     #all-inputs-container{
         grid-template-columns: 1fr 1fr;
         gap: 15px;
     }
-
+    
     #input-gastos-categoria-container{
         grid-column-start: 1;
         grid-column-end: 3;
     }
 
+    select{
+        height: 31px;
+        background-color: white;
+    }
+
     table{
         font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 1010px){
+    /* Aside Open */
+    #pageContainer.pageContainerAsideOpen .table-container{
+        max-width: 430px;
     }
 }
 

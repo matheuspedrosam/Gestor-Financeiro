@@ -14,7 +14,13 @@ class Aside extends HTMLElement {
                     <a href="controle.html">
                         <li class="asideMenuButtons">
                             <span class="material-symbols-outlined aside-icons">payments</span>
-                            <span class="navNames">Controle</span>
+                            <span class="navNames">Transações</span>
+                        </li>
+                    </a>
+                    <a href="controle.html">
+                        <li class="asideMenuButtons">
+                            <span class="material-symbols-outlined aside-icons">credit_card</span>
+                            <span class="navNames">Gastos Cartão</span>
                         </li>
                     </a>
                     <a href="dashboard.html">

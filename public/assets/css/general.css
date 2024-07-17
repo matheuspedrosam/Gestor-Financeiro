@@ -67,6 +67,7 @@ body{
 #pageContainer{
     display: grid;
     grid-template-columns: 65px 1fr;
+    min-height: 100vh !important;
 }
 
 /* PageContainer AsideClosed */
@@ -120,7 +121,8 @@ body{
     box-shadow: 0px 0px 4px lightgray;
 }
 
-#table-financeiro-container::-webkit-scrollbar, #table-container::-webkit-scrollbar{
+/* Scroll Bar Personalizada */
+/* #table-financeiro-container::-webkit-scrollbar, #table-container::-webkit-scrollbar{
     width: 10px;
 }
 
@@ -132,7 +134,7 @@ body{
 
 #table-financeiro-container::-webkit-scrollbar-thumb:hover, #table-container::-webkit-scrollbar-thumb:hover{
     background-color: rgb(180, 180, 180);
-}
+} */
 
 table{
     font-size: 14px;
@@ -227,10 +229,10 @@ button{
 
 /* Media */
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1200px){
 
-    #pageContainer.pageContainerAsideOpen #table-container, #pageContainer.pageContainerAsideOpen #table-financeiro-container{
-        overflow-x: scroll;
+    #pageContainer.pageContainerAsideOpen #table-container, #pageContainer.pageContainerAsideOpen #table-financeiro-container, #pageContainer.pageContainerAsideOpen .table-container{
+        overflow-x: scroll !important;
     }
 
     table{

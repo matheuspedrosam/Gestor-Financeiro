@@ -6,8 +6,6 @@ import { loaderAnimationON, loaderAnimationOFF } from "./functions/loaderAnimati
 const db = getFirestore(app);
 const auth = await getAuth(app);
 
-const tableBodyFinanceiro = document.querySelectorAll(".table-container tbody")[0];
-
 export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
 
     const mesTabelaInput = document.querySelector("#mes-tabela-input");
@@ -40,10 +38,8 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
         atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias);
     })
 
-    loaderAnimationOFF();    
-
+    loaderAnimationOFF();
 }
-await atualizarTabelasEDadosFinanceiro("data", "");
 
 
 

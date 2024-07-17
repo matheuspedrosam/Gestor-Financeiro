@@ -43,10 +43,10 @@ function atualizarObservacao(){
             editor.setContent(`${retorno}`);
           });
           editor.on('change', (e) => {
-            document.querySelector("#alerta").style.display = "inline";
             if(totalAlteracoes == 0){
-              alert("Cuidado, você possui alterações não salvas. Para Salvar basta clicar no botão azul 'Salvar Alterações' no final da página!");
+              document.querySelector("#alerta").style.display = "inline";
               totalAlteracoes += 1;
+              window.addEventListener("beforeunload", beforeUnloadHandler);
             }
           })
         }
@@ -88,5 +88,15 @@ btnSalvarMudancas.addEventListener("click", async (event) => {
 
     document.querySelector("#alerta").style.display = "none";
     totalAlteracoes = 0;
+    window.removeEventListener("beforeunload", beforeUnloadHandler);
     alert("Dados Salvos com sucesso!");
 });
+
+
+const beforeUnloadHandler = (event) => {
+  // Recommended
+  event.preventDefault();
+
+  // Included for legacy support, e.g. Chrome/Edge < 119
+  event.returnValue = true;
+};

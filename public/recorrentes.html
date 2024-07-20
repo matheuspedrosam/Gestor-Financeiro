@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/217/217853.png" type="image/x-icon">
-    <title>Controle | Gestor Financeiro</title>
+    <title>Recorrentes | Gestor Financeiro</title>
     <!-- Style -->
     <link rel="stylesheet" href="assets/css/general.css">
-    <link rel="stylesheet" href="assets/css/controle.css">
+    <link rel="stylesheet" href="assets/css/recorrentes.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!-- Aside -->
     <link rel="stylesheet" href="assets/components/aside/aside.css">
@@ -32,7 +32,7 @@
                         <img id="banner-img" src="assets/imgs/Banner Gestor.png" alt="">
                     </div>
                     <h1 id="main-title">Gestor Financeiro <img id="moeda-icon" class="icons-pngs" src="assets/imgs/moeda-icon.png" alt=""></h1>
-                    <h2 id="main-sub-title">Adicionar Transações: <img class="icons-pngs" src="assets/imgs/dinheiro-icon.png" alt=""></h2>
+                    <h2 id="main-sub-title">Adicionar Transações Recorrentes: ↩️</h2>
                     <div id="inputs-entrada-e-saida-infos-container">
                         <div>
                             <label for="input-descricao">Descrição:</label>
@@ -58,10 +58,6 @@
                                 <option value="entrada">Entrada</option>
                                 <option value="saida">Saída</option>
                             </select>
-                        </div>
-                        <div>
-                            <label for="input-data">Data:</label>
-                            <input type="date" id="input-data">
                         </div>
                     </div>
                     <div>
@@ -99,10 +95,6 @@
                                         <option value="saida">Saída</option>
                                     </select>
                                 </div>
-                                <div>
-                                    <label for="editar-input-data">Data:</label>
-                                    <input type="text" id="editar-input-data" disabled>
-                                </div>
                             </div>
                             <div>
                                 <button id="btn-editar-entrada-ou-saida">Salvar</button>
@@ -111,8 +103,10 @@
                     </div>
                     <!-- Fim Modal -->
 
-                    <h1>Financeiro:</h1>
-                    
+                    <h1>Recorrentes:</h1>
+            
+                    <div id="loader" class="hide"></div>
+
                     <div id="input-visualizar-tabela-mes-e-ordernar-container">
                         <div>
                             <label for="ordernar-select">Ordernar:</label>
@@ -122,24 +116,13 @@
                                 <option value="Descrição decrescente">Descrição decrescente</option>
                                 <option value="Categoria">Categoria</option>
                                 <option value="Categoria decrescente">Categoria decrescente</option>
-                                <option value="Data">Data</option>
-                                <option value="Data decrescente">Data decrescente</option>
                                 <option value="Entrada">Entrada</option>
                                 <option value="Saída">Saída</option>
                                 <option value="Valor">Valor</option>
                                 <option value="Valor decrescente">Valor decrescente</option>
                             </select>
                         </div>
-                        <div>
-                            <label for="mes-tabela-input">Ver Tabela do mês:</label>
-                            <input type="month" id="mes-tabela-input">
-                        </div>
-                        <div>
-                            <button id="atualizar-tabela-btn">Atualizar</button>
-                        </div>
                     </div>
-            
-                    <div id="loader" class="hide"></div>
                     
                     <div id="table-financeiro-container" class="table-container">
                         <table id="table-financeiro">
@@ -148,7 +131,6 @@
                                     <th>Descrição</th>
                                     <th>Observação</th>
                                     <th>Categoria</th>
-                                    <th>Data</th>
                                     <th>Tipo</th>
                                     <th>Valor</th>
                                     <th>Editar</th>
@@ -171,12 +153,12 @@
     <script src="assets/components/aside/hideAside.js"></script>
     <!-- Modal -->
     <script type="module" src="assets/components/modal/closeModal.js"></script>
-    <!-- Controle -->
-    <script type="module" src="assets/js/controle/inicialControle.js"></script>
-    <script type="module" src="assets/js/controle/adicionarEntradaESaida.js"></script>
-    <script type="module" src="assets/js/controle/ordernarTabela.js"></script>
-    <script type="module" src="assets/js/controle/atualizarTabelasEDadosFinanceiros.js"></script>
-    <script type="module" src="assets/js/controle/editarEntradaEsaida.js"></script>
-    <script type="module" src="assets/js/controle/apagarEntradaESaida.js"></script>
+    <!-- Recorrentes -->
+    <script type="module" src="assets/js/recorrentes/inicialRecorrentes.js"></script>
+    <script type="module" src="assets/js/recorrentes/adicionarRecorrencia.js"></script>
+    <script type="module" src="assets/js/recorrentes/ordernarTabela.js"></script>
+    <script type="module" src="assets/js/recorrentes/atualizarTabela.js"></script>
+    <script type="module" src="assets/js/recorrentes/editarRecorrencia.js"></script>
+    <script type="module" src="assets/js/recorrentes/apagarRecorrencia.js"></script>
 </body>
 </html>

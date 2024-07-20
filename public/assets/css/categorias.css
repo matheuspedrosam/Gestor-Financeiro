@@ -55,11 +55,6 @@
 }
 
 /* Table */
-#table-container{
-    overflow-y: auto;
-    max-height: none;
-}
-
 table tbody tr :nth-child(4), table tbody tr :nth-child(5){
     text-decoration: underline;
     cursor: pointer;

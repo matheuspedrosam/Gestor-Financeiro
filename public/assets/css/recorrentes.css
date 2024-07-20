@@ -1,0 +1,429 @@
+@charset "UTF-8";
+
+/* Classes Geral*/
+.tipo-entrada, .tipo-saida, .tipo-investimento, .tipo-error{
+    border-radius: 100%;
+    color: white;
+}
+
+.tipo-saida{
+    background-color: red;
+}
+
+.tipo-entrada{ 
+    background-color: var(--cor-verde);
+}
+
+.tipo-error{
+    background-color: rgb(157, 192, 0);
+}
+
+.tipo-investimento{
+    font-size: 12px !important;
+    padding: 2px;
+    background-color: #042940;
+    border: 2px solid white;
+    outline: 2px solid #042940;
+}
+
+.valor-entrada{
+    color: var(--cor-verde) !important;
+}
+
+.valor-saida{
+    color: red !important;
+}
+
+/* Inputs */
+
+#inputs-entrada-e-saida-infos-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, select{
+    display: block;
+    border: 1px solid lightgray;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+#btn-adicionar-entrada-ou-saida, #btn-editar-entrada-ou-saida{
+    background-color: var(--cor-azul);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 1px 1px lightgray;
+}
+
+#btn-adicionar-entrada-ou-saida:hover, #btn-editar-entrada-ou-saida:hover{
+    box-shadow: 0px 0px 4px var(--cor-azul);
+}
+
+/* Modal Editar */
+
+#modal-editar #inputs-entrada-e-saida-infos-container{
+    grid-template-columns: 1fr 1fr;
+}
+
+#modal-editar #inputs-entrada-e-saida-infos-container div:first-child{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+/* Mes e Ordernar Tabela */
+
+#input-visualizar-tabela-mes-e-ordernar-container{
+    display: grid;
+    grid-template-columns: minmax(200px, 250px);
+    margin-bottom: 40px;
+}
+
+#atualizar-tabela-btn{
+    background-color: var(--cor-azul);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 1px 1px lightgray;
+    max-width: 200px;
+}
+
+#atualizar-tabela-btn:hover{
+    box-shadow: 0px 0px 4px var(--cor-azul);
+}
+
+/* Table */
+#table-financeiro-container{
+    max-height: 800px;
+}
+
+table tbody tr :nth-child(6), table tbody tr :nth-child(7){
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Relatórios */
+#relatorios-container .table-container{
+    margin-bottom: 50px;
+}
+
+#saidas-titulo{
+    background-color: #E83F5B50;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+#investimentos-titulo{
+    background-color: #01e6ee50;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+/* Resumo saídas, entradas e saldo */
+#resumo-do-mes-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px 20px;
+    box-shadow: 0px 0px 4px lightgray;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#resumo-do-mes-container h2{
+    font-size: 20px;
+}
+
+.saldos-totais-do-mes-containers{
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    box-shadow: 0px 0px 4px lightgray;
+}
+
+.saldos-totais-do-mes-containers:nth-child(1){
+    border: 1px solid var(--cor-verde);
+}
+
+.saldos-totais-do-mes-containers:nth-child(2){
+    border: 1px solid var(--cor-verde);
+}
+
+.saldos-totais-do-mes-containers:nth-child(3){
+    border: 1px solid red;
+}
+
+.saldos-totais-do-mes-containers h2{
+    margin-bottom: 20px;
+    display: block;
+}
+
+.saldos-totais-do-mes-containers div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.saldos-totais-do-mes-containers div p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Gastos por classes categorias */
+
+#gastos-por-classes-categorias-container{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    width: 100%;
+}
+
+/* Legends */
+#legendContainer{
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.legend{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.legendBox{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+#legendEssencial{
+    background-color: var(--cor-azul);
+}
+
+#legendNaoEssencial{
+    background-color: var(--azul-claro);
+}
+
+#legendInvestimento{
+    background-color: var(--cor-azul-investimento);
+}
+
+/* Loader */
+#loader-gastos-por-classes{
+    display: flex;
+    border-radius: 5px;
+    font-size: 20px;
+    border-right: 1px solid lightgray;
+    box-shadow: 0px 0px 4px 1px lightgray;
+    white-space: nowrap;
+}
+
+#essencial-total-container, #nao-essencial-total-container, #investimento-total-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0px;
+    font-weight: bold;
+}
+
+#essencial-total-container{
+    width: 10%;
+    border-radius: 5px 0px 0px 5px;
+    background-color: var(--cor-azul);
+}
+
+#nao-essencial-total-container{
+    width: 10%;
+    background-color: rgba(0, 255, 255, 0.5);
+}
+
+#investimento-total-container{
+    width: 10%;
+    background-color: var(--cor-azul-investimento);
+    border-radius: 0px 5px 5px 0px;
+}
+
+#essencial-total-container span, #nao-essencial-total-container span, #investimento-total-container span{
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    z-index: 2;
+}
+
+
+/* Media Queries */
+@media print {
+    header, #img-and-logout-btn-container, #main-title, #main-sub-title, #inputs-entrada-e-saida-infos-container, button, #input-visualizar-tabela-mes-e-ordernar-container :nth-child(1), #table-financeiro tr :nth-child(7){
+        display: none;
+    }
+
+    #table-financeiro-container{
+        overflow-y: auto;
+        max-height: unset;
+    }
+
+    #table-financeiro thead.position-sticky{
+        position: static;
+        top: auto;
+        background-color: transparent;
+        box-shadow: unset;
+    }
+
+    #resumo-do-mes-container{
+        box-shadow: 0px 0px 0px 1px black;
+    }
+
+    .saldos-totais-do-mes-containers{
+        box-shadow: none;
+    }
+
+    #loader-gastos-por-classes{
+        box-shadow: none;
+        border: none;
+    }
+
+    #essencial-total-container, #nao-essencial-total-container, #investimento-total-container{
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        box-shadow: none;
+        background-color: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    body{
+        padding: 0px;
+    }
+
+    main{
+        overflow: hidden;
+    }
+
+    input{
+        background-color: white;
+        width: 100%;
+        height: 31px;
+    }
+    
+    select{
+        height: 31px;
+        background-color: white;
+    }
+    
+    #input-data, #mes-tabela-input{
+        display: flex;
+        align-items: center;
+        background-color: white;
+        height: 31px;
+    }
+
+    #table-financeiro-container table{
+        font-size: 10px !important;
+    }
+
+    #table-financeiro-container .tipo-entrada, #table-financeiro-container .tipo-saida{
+        font-size: 21px !important;
+    }
+
+    #table-financeiro-container .tipo-investimento{
+        font-size: 10px !important;
+    }
+
+    .table-container table{
+        font-size: 12px !important;
+    }
+
+    /* .table-container{
+        font-size: 14px;
+    } */
+
+    #resumo-do-mes-container{
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 0px;
+    }
+    
+    #saldo-total-do-mes-container{
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+
+    /* ASIDE OPEN */
+
+    #pageContainer.pageContainerAsideOpen #resumo-do-mes-container{
+        grid-template-columns: 1fr;
+    }
+
+    #pageContainer.pageContainerAsideOpen #saldo-total-do-mes-container{
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    #pageContainer.pageContainerAsideOpen #gastos-por-classes-categorias-container{
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    #pageContainer.pageContainerAsideOpen #saldo-total-entradas-do-mes-container{
+        margin-right: 0px;
+    }
+
+    #saldo-total-entradas-do-mes-container{
+        margin-right: 10px;
+    }
+    
+    .saldos-totais-do-mes-containers{
+        padding: 15px;
+    }
+
+    #loader-gastos-por-classes{
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    h1{
+        font-size: 25px;
+    }
+
+    h2{
+        font-size: 20px;
+    }
+
+    #inputs-entrada-e-saida-infos-container{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .table-container{
+        font-size: 12px;
+        overflow-x: scroll;
+    }
+
+    #resumo-do-mes-container h2{
+        font-size: 16px;
+    }
+
+    .saldos-totais-do-mes-containers{
+        padding: 10px;
+    }
+
+    .saldos-totais-do-mes-containers div p{
+        font-size: 15px;
+        white-space: nowrap;
+    }
+
+    .tipo-entrada, .tipo-saida{
+        font-size: 15px;
+    }
+
+    #loader-gastos-por-classes{
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}

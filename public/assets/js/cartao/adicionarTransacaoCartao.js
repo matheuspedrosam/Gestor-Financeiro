@@ -107,6 +107,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
                 tipo: $tipoSelectParaEnviarBanco,
                 data: new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`),
                 parcelas: $arrayParcelasParaEnviarBanco,
+                mesInicio: `${ano}-${mes}`,
                 faturaDoMes: faturaSelect.value === 'mesAtual' ? true : false, 
                 // Esse ano e mes é necessário?
                 mes: tratarData(new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)).mes,
@@ -123,7 +124,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
         observacaoInput.value = "";
         valorInput.value = "";
         categoriaSelect.value = "escolha";
-        tipoSelect.value = "entrada";
+        tipoSelect.value = "saida";
         // dataInput.value = `${tratarData(new Date()).ano}-${tratarData(new Date()).mes}-${tratarData(new Date()).dia}` // Em vez de tratar a data já irei deixar ela (geralmente será adicionado +1 gasto por dia)
 
     } else{

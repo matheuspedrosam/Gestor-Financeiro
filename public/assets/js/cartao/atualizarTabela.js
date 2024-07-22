@@ -25,10 +25,15 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
     
     auth.onAuthStateChanged(async (userCredentials) => {
         let q;
+        let qIniciais;
         if(desc == ""){
             q = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem))
+
+            qIniciais = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("mesInicio", "==", `${ano}-${mes}`), where("faturaDoMes", "==", false), orderBy(ordem))
         } else {
             q = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem, desc));
+
+            qIniciais = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("mesInicio", "==", `${ano}-${mes}`), where("faturaDoMes", "==", false), orderBy(ordem, desc))
         }
 
         let queryCategorias = await getDocs(query(collection(db, "Categorias"), where("userID", "==", userCredentials.uid), orderBy("nome")))
@@ -40,7 +45,11 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
         
         const queryEntradasESaidas = await getDocs(q);
 
-        atualizarTabelaFinanceiro(queryEntradasESaidas, categorias);
+        const queryIniciais = await getDocs(qIniciais);
+
+        let BothQueries = [...queryEntradasESaidas.docs, ...queryIniciais.docs];
+
+        atualizarTabelaFinanceiro(BothQueries, categorias);
         atualizarDadosGerais(queryEntradasESaidas);
     })
 
@@ -60,7 +69,7 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
         let dataFormatada = `${tratarData(data).dia}/${tratarData(data).mes}/${tratarData(data).ano}`;
         
         let arrayParcelas = entradasESaidas.data().parcelas;
-        let parcelaAtual;
+        let parcelaAtual = 0;
         for(const parcela of arrayParcelas){
             if(parcela === `${ano}-${mes}`){
                 parcelaAtual = arrayParcelas.indexOf(parcela) + 1;
@@ -104,6 +113,15 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
             `
         }
         
+        let valor = entradasESaidas.data().valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+        let editar = "Editar"
+        let style = "style=''"
+        if(parcelaAtual === 0){
+            valor = '"próx mês"';
+            editar = '"próx mês"';
+            style = "style='text-decoration: none; cursor: auto;'";
+        }
+
         tableBodyFinanceiro.innerHTML += `
             <tr id="${entradasESaidas.id}">
                 <td>${entradasESaidas.data().descricao} <strong>(${parcelaAtual}/${totalParcelas})</strong></td>
@@ -111,8 +129,8 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
                 <td>${categoriaNome}</td>
                 <td>${dataFormatada}</td>
                 <td>${spanTipo}</td>
-                <td class="${classValor}">${simbolo}${entradasESaidas.data().valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</td>
-                <td class="${entradasESaidas.data().faturaDoMes}">Editar</td>
+                <td class="${classValor}">${simbolo}${valor}</td>
+                <td ${style} class="${entradasESaidas.data().faturaDoMes}">${editar}</td>
                 <td>Excluir</td>
             </tr>
         `;

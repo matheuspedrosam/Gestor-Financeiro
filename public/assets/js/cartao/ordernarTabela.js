@@ -1,4 +1,4 @@
-import { atualizarTabelasEDadosFinanceiro } from "./atualizarTabelasEDadosFinanceiros.js"
+import { atualizarTabelasEDadosFinanceiro } from "./atualizarTabela.js"
 
 const ordernarSelect = document.querySelector("#ordernar-select")
 

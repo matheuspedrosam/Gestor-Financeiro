@@ -16,11 +16,21 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
     
     auth.onAuthStateChanged(async (userCredentials) => {
 
-        let q;
+        let qEs;
+        let qC;
+        let qR;
         if(desc == ""){
-            q = await query(collection(db, "EntradasESaidas"), where("userID", "==", userCredentials.uid), where("mes", "==", mes), where("ano", "==", Number(ano)), orderBy(ordem));
+            qEs = await query(collection(db, "EntradasESaidas"), where("userID", "==", userCredentials.uid), where("mes", "==", mes), where("ano", "==", Number(ano)), orderBy(ordem));
+
+            qC = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem));
+
+            qR = await query(collection(db, "Recorrentes"), where("userID", "==", userCredentials.uid));
         } else {
-            q = await query(collection(db, "EntradasESaidas"), where("userID", "==", userCredentials.uid), where("mes", "==", mes), where("ano", "==", Number(ano)), orderBy(ordem, desc));
+            qEs = await query(collection(db, "EntradasESaidas"), where("userID", "==", userCredentials.uid), where("mes", "==", mes), where("ano", "==", Number(ano)), orderBy(ordem, desc));
+
+            qC = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem, desc));
+
+            qR = await query(collection(db, "Recorrentes"), where("userID", "==", userCredentials.uid));
         }
 
         let queryCategorias = await getDocs(query(collection(db, "Categorias"), where("userID", "==", userCredentials.uid), orderBy("nome")))
@@ -30,12 +40,16 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
             categorias.push({'id': categoria.id, 'nome': categoria.data().nome, 'classe': categoria.data().classe, 'metaGasto': categoria.data().metaGasto})
         });
         
-        const queryEntradasESaidas = await getDocs(q);
+        const queryEntradasESaidas = await getDocs(qEs);
+        const queryCartao = await getDocs(qC);
+        const queryRecorrentes = await getDocs(qR);
 
-        atualizarSaidasPorCategorias(queryEntradasESaidas, categorias);
-        atualizarInvestimentos(queryEntradasESaidas, categorias);
-        atualizarDadosGerais(queryEntradasESaidas);
-        atualizarSaidasPorClasseDeCategoria(queryEntradasESaidas, categorias);
+        const allQueries = [...queryEntradasESaidas.docs, ...queryCartao.docs, ...queryRecorrentes.docs]
+
+        atualizarSaidasPorCategorias(allQueries, categorias);
+        atualizarInvestimentos(allQueries, categorias);
+        atualizarDadosGerais(allQueries);
+        atualizarSaidasPorClasseDeCategoria(allQueries, categorias);
     })
 
     loaderAnimationOFF();

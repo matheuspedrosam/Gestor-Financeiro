@@ -34,6 +34,7 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
         const queryEntradasESaidas = await getDocs(q);
 
         atualizarTabelaFinanceiro(queryEntradasESaidas, categorias);
+        atualizarDadosGerais(queryEntradasESaidas);
     })
 
     loaderAnimationOFF();    
@@ -96,4 +97,22 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
             </tr>
         `;
     })
+}
+
+export function atualizarDadosGerais(queryEntradasESaidas){
+    let totalEntradas = 0
+    let totalSaidas = 0
+    queryEntradasESaidas.forEach(entradasESaidas => {
+        if(entradasESaidas.data().tipo == "entrada"){
+            totalEntradas += entradasESaidas.data().valor
+        } else if(entradasESaidas.data().tipo == "saida"){
+            totalSaidas += entradasESaidas.data().valor
+        }
+    })
+
+    const spanSaldoTotalEntradas = document.querySelector("#saldo-total-entradas");
+    const spanSaldoTotalSaidas = document.querySelector("#saldo-total-saidas");
+
+    spanSaldoTotalEntradas.innerText = `${totalEntradas.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+    spanSaldoTotalSaidas.innerText = `${totalSaidas.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
 }

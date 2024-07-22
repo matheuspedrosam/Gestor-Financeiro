@@ -38,8 +38,6 @@ const db = getFirestore(app);
 const editarBtn = document.querySelector("#btn-editar-entrada-ou-saida");
 editarBtn.addEventListener("click", async () => {
     if(validarDados()){
-        console.log(editarSelectCategoria.value);
-        console.log(editarSelectCategoria.classList.value);
         await updateDoc(doc(db, "Recorrentes", $transacaoParaserEditada), {
             descricao: editarInputDescricao.value,
             observacao: editarInputObservacao.value,

@@ -38,9 +38,13 @@
 
 #inputs-entrada-e-saida-infos-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 10px;
     margin-bottom: 10px;
+}
+
+#select-tipo{
+    cursor: not-allowed;
 }
 
 input, select{
@@ -71,7 +75,7 @@ input, select{
     background-color: bisque;
 }
 
-#editar-input-data{
+#editar-input-data, #editar-select-tipo, #editar-select-fatura{
     cursor: not-allowed;
 }
 
@@ -148,31 +152,31 @@ table tbody tr :nth-child(7), table tbody tr :nth-child(8){
     font-size: 20px;
 }
 
-#saldos-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    max-width: 600px;
-}
-
 .saldos-totais-do-mes-containers{
     padding: 20px;
     border-radius: 5px;
+    margin-bottom: 40px;
+    max-width: 300px;
     border: 1px solid lightgray;
     box-shadow: 0px 0px 4px lightgray;
-    margin-bottom: 40px;
-}
-
-#saldo-total-entradas-do-mes-container{
-    border: 1px solid var(--cor-verde);
 }
 
 #saldo-total-saidas-do-mes-container{
     border: 1px solid red;
 }
+/* 
+.saldos-totais-do-mes-containers:nth-child(1){
+    border: 1px solid var(--cor-verde);
+}
+
+.saldos-totais-do-mes-containers:nth-child(2){
+    border: 1px solid var(--cor-verde);
+}
+
+.saldos-totais-do-mes-containers:nth-child(3){
+} */
 
 .saldos-totais-do-mes-containers h2{
-    font-size: 18px;
     margin-bottom: 20px;
     display: block;
 }

@@ -7,13 +7,16 @@ import { tratarData } from "./functions/tratarData.js";
 const db = getFirestore(app);
 const auth = await getAuth(app);
 
+let mes;
+let ano;
+
 const tableBodyFinanceiro = document.querySelectorAll(".table-container tbody")[0];
 
 export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
 
     const mesTabelaInput = document.querySelector("#mes-tabela-input");
-    let mes = mesTabelaInput.value.split("-")[1];
-    let ano = mesTabelaInput.value.split("-")[0];
+    mes = mesTabelaInput.value.split("-")[1];
+    ano = mesTabelaInput.value.split("-")[0];
 
     tableBodyFinanceiro.innerHTML = "";
     // tableBodyRelatorio.innerHTML = "";
@@ -21,12 +24,11 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
     loaderAnimationON();
     
     auth.onAuthStateChanged(async (userCredentials) => {
-
         let q;
         if(desc == ""){
-            q = await query(collection(db, "EntradasESaidas"), where("userID", "==", userCredentials.uid), where("mes", "==", mes), where("ano", "==", Number(ano)), orderBy(ordem));
+            q = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem))
         } else {
-            q = await query(collection(db, "EntradasESaidas"), where("userID", "==", userCredentials.uid), where("mes", "==", mes), where("ano", "==", Number(ano)), orderBy(ordem, desc));
+            q = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem, desc));
         }
 
         let queryCategorias = await getDocs(query(collection(db, "Categorias"), where("userID", "==", userCredentials.uid), orderBy("nome")))
@@ -57,6 +59,15 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
         let data = new Date(entradasESaidas.data().data.seconds * 1000);
         let dataFormatada = `${tratarData(data).dia}/${tratarData(data).mes}/${tratarData(data).ano}`;
         
+        let arrayParcelas = entradasESaidas.data().parcelas;
+        let parcelaAtual;
+        for(const parcela of arrayParcelas){
+            if(parcela === `${ano}-${mes}`){
+                parcelaAtual = arrayParcelas.indexOf(parcela) + 1;
+            }
+        }
+        let totalParcelas = arrayParcelas.length;
+
         let spanTipo;
         let classValor;
         let simbolo;
@@ -95,13 +106,13 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
         
         tableBodyFinanceiro.innerHTML += `
             <tr id="${entradasESaidas.id}">
-                <td>${entradasESaidas.data().descricao}</td>
+                <td>${entradasESaidas.data().descricao} <strong>(${parcelaAtual}/${totalParcelas})</strong></td>
                 <td>${entradasESaidas.data().observacao}</td>
                 <td>${categoriaNome}</td>
                 <td>${dataFormatada}</td>
                 <td>${spanTipo}</td>
                 <td class="${classValor}">${simbolo}${entradasESaidas.data().valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</td>
-                <td>Editar</td>
+                <td class="${entradasESaidas.data().faturaDoMes}">Editar</td>
                 <td>Excluir</td>
             </tr>
         `;
@@ -216,7 +227,6 @@ export async function atualizarTabelaFinanceiro(queryEntradasESaidas, categorias
 
             
 export function atualizarDadosGerais(queryEntradasESaidas){
-    // let total = 0
     let totalEntradas = 0
     let totalSaidas = 0
     queryEntradasESaidas.forEach(entradasESaidas => {
@@ -226,35 +236,9 @@ export function atualizarDadosGerais(queryEntradasESaidas){
             totalSaidas += entradasESaidas.data().valor
         }
     })
-    // total = totalEntradas + totalSaidas
-    
 
-    // const saldoTotalDoMesContainer = document.querySelector("#saldo-total-do-mes-container")
-    // const spanSaldoTotal = document.querySelector("#saldo-total");
-    // const iconSpanSaldoTotal = document.querySelector("#icon-saldo-total")
-
-    // if(total >= 0){
-    //     saldoTotalDoMesContainer.style.border = "1px solid var(--cor-verde)"
-    //     spanSaldoTotal.classList.remove("valor-saida")
-    //     spanSaldoTotal.classList.add("valor-entrada")
-    //     iconSpanSaldoTotal.innerText = "expand_circle_up"
-    //     iconSpanSaldoTotal.classList.remove("tipo-saida")
-    //     iconSpanSaldoTotal.classList.add("tipo-entrada")
-    // } else if(total < 0) {
-    //     saldoTotalDoMesContainer.style.border = "1px solid red"
-    //     spanSaldoTotal.classList.remove("valor-entrada")
-    //     spanSaldoTotal.classList.add("valor-saida")
-    //     iconSpanSaldoTotal.innerText = "expand_circle_down"
-    //     iconSpanSaldoTotal.classList.remove("tipo-entrada")
-    //     iconSpanSaldoTotal.classList.add("tipo-saida")
-    // }
-    // spanSaldoTotal.innerText = `${total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
-
-
-    const spanSaldoTotalEntradas = document.querySelector("#saldo-total-entradas");
     const spanSaldoTotalSaidas = document.querySelector("#saldo-total-saidas");
 
-    spanSaldoTotalEntradas.innerText = `${totalEntradas.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
     spanSaldoTotalSaidas.innerText = `${totalSaidas.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
 }
 

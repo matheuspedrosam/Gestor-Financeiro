@@ -100,7 +100,8 @@ input, select{
 
 /* Table */
 #table-financeiro-container{
-    max-height: 800px;
+    max-height: 600px;
+    overflow-y: scroll;
 }
 
 table tbody tr :nth-child(6), table tbody tr :nth-child(7){

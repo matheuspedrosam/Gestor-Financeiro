@@ -2,7 +2,7 @@ import { tratarData } from "../controle/functions/tratarData.js";
 
 // Modificar o Header e o Aside;
 document.querySelector("main-header h1").innerHTML = "Observações";
-document.querySelectorAll("main-aside .asideMenuButtons")[5].classList.add("asideCurrentButton");
+document.querySelectorAll("main-aside .asideMenuButtons")[6].classList.add("asideCurrentButton");
 
 const monthInput = document.querySelector("#mes-observacao-input");
 

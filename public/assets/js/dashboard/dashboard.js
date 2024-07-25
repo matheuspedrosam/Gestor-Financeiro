@@ -18,17 +18,22 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
 
         let qEs;
         let qC;
+        let qEmp;
         let qR;
         if(desc == ""){
             qEs = await query(collection(db, "EntradasESaidas"), where("userID", "==", userCredentials.uid), where("mes", "==", mes), where("ano", "==", Number(ano)), orderBy(ordem));
 
             qC = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem));
 
+            qEmp = await query(collection(db, "Emprestimos"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem));
+
             qR = await query(collection(db, "Recorrentes"), where("userID", "==", userCredentials.uid));
         } else {
             qEs = await query(collection(db, "EntradasESaidas"), where("userID", "==", userCredentials.uid), where("mes", "==", mes), where("ano", "==", Number(ano)), orderBy(ordem, desc));
 
             qC = await query(collection(db, "Cartao"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem, desc));
+
+            qEmp = await query(collection(db, "Emprestimos"), where("userID", "==", userCredentials.uid), where("parcelas", "array-contains", `${ano}-${mes}`), orderBy(ordem, desc));
 
             qR = await query(collection(db, "Recorrentes"), where("userID", "==", userCredentials.uid));
         }
@@ -42,9 +47,10 @@ export async function atualizarTabelasEDadosFinanceiro(ordem, desc){
         
         const queryEntradasESaidas = await getDocs(qEs);
         const queryCartao = await getDocs(qC);
+        const queryEmprestimos = await getDocs(qEmp);
         const queryRecorrentes = await getDocs(qR);
 
-        const allQueries = [...queryEntradasESaidas.docs, ...queryCartao.docs, ...queryRecorrentes.docs]
+        const allQueries = [...queryEntradasESaidas.docs, ...queryCartao.docs, ...queryEmprestimos.docs, ...queryRecorrentes.docs]
 
         atualizarSaidasPorCategorias(allQueries, categorias);
         atualizarInvestimentos(allQueries, categorias);

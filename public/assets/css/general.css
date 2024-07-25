@@ -203,6 +203,10 @@ select{
     margin-bottom: 20px;
 }
 
+select:focus{
+    box-shadow: 0px 0px 4px lightgray;
+}
+
 hr{
     height: 1px;
     width: 100%;

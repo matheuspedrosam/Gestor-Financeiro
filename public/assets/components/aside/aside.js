@@ -29,6 +29,12 @@ class Aside extends HTMLElement {
                             <span class="navNames">Gastos Cartão</span>
                         </li>
                     </a>
+                    <a href="emprestimos.html">
+                        <li class="asideMenuButtons">
+                            <span class="material-symbols-outlined aside-icons">real_estate_agent</span>
+                            <span class="navNames">Empréstimos</span>
+                        </li>
+                    </a>
                     <a href="dashboard.html">
                         <li class="asideMenuButtons">
                             <span class="material-symbols-outlined aside-icons">trending_up</span>

@@ -26,6 +26,8 @@ function validarDados(){
     if(regexp.test(valorInput.value)){
         if(valorInput.value.split(".")[1].length > 2) return false;
     }
+
+    if(parcelasSelect.value <= 0 || parcelasSelect.value > 400) return false;
     
     // if(tipoSelect.value == "entrada" && valorInput.value < 0) return false;
 
@@ -75,6 +77,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
     const $dataInputParaEnviarBanco = dataInput.value
     const $faturaSelectParaEnviarBanco = faturaSelect.value
 
+
     // Tratamento das parcelas
     let mes = $dataInputParaEnviarBanco.slice(0, -3).split('-')[1]
     let ano = $dataInputParaEnviarBanco.slice(0, -3).split('-')[0]
@@ -99,7 +102,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
         const auth = await getAuth(app);
 
         auth.onAuthStateChanged(async (userCredentials) => {
-            await addDoc(collection(db, "Cartao"), {
+            await addDoc(collection(db, "Emprestimos"), {
                 userID: userCredentials.uid,
                 descricao: $descricaoInputParaEnviarBanco,
                 observacao: $observacaoInputParaEnviarBanco,
@@ -109,7 +112,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
                 data: new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`),
                 parcelas: $arrayParcelasParaEnviarBanco,
                 mesInicio: `${ano}-${mes}`,
-                faturaDoMes: $faturaSelectParaEnviarBanco == 'mesAtual' ? true : false, 
+                faturaDoMes: $faturaSelectParaEnviarBanco == 'mesAtual' ? true : false,
                 // Esse ano e mes é necessário?
                 mes: tratarData(new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)).mes,
                 ano: tratarData(new Date(`${$dataInputParaEnviarBanco} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)).ano 
@@ -126,7 +129,7 @@ btnAdicionarEntradaESaida.addEventListener("click", async (event) => {
         valorInput.value = "";
         categoriaSelect.value = "escolha";
         tipoSelect.value = "saida";
-        parcelasSelect.value = "1";
+        parcelasSelect.value = "";
         faturaSelect.value = "mesAtual";
         // dataInput.value = `${tratarData(new Date()).ano}-${tratarData(new Date()).mes}-${tratarData(new Date()).dia}` // Em vez de tratar a data já irei deixar ela (geralmente será adicionado +1 gasto por dia)
 
